@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on xkiller - A super concise blog for dev</title>
+    <link>http://xkiller.net/tags/git/</link>
+    <description>Recent content in git on xkiller - A super concise blog for dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 13 May 2019 10:38:03 +0800</lastBuildDate><atom:link href="http://xkiller.net/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建自己的git服务器</title>
+      <link>http://xkiller.net/post/2019/05/setup-your-own-git-server/</link>
+      <pubDate>Mon, 13 May 2019 10:38:03 +0800</pubDate>
+      
+      <guid>http://xkiller.net/post/2019/05/setup-your-own-git-server/</guid>
+      <description>环境: server: ubuntu 16.4 第一步，安装git: sudo apt-get install git 第二步，创建一个git用户，用来运行git服务： sudo adduser git 第三步，创建证书登录： 收集所有需要登录的用户的</description>
+    </item>
+    
+  </channel>
+</rss>

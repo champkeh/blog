@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nodejs on xkiller - A super concise blog for dev</title>
+    <link>http://xkiller.net/tags/nodejs/</link>
+    <description>Recent content in nodejs on xkiller - A super concise blog for dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 15 May 2019 17:37:34 +0800</lastBuildDate><atom:link href="http://xkiller.net/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Koa 项目脚手架</title>
+      <link>http://xkiller.net/post/2019/05/koa-scaffold/</link>
+      <pubDate>Wed, 15 May 2019 17:37:34 +0800</pubDate>
+      
+      <guid>http://xkiller.net/post/2019/05/koa-scaffold/</guid>
+      <description>由于 koa 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。 koa-router</description>
+    </item>
+    
+    <item>
+      <title>Koa 学习笔记</title>
+      <link>http://xkiller.net/post/2019/05/koa-learn-note/</link>
+      <pubDate>Wed, 15 May 2019 10:40:36 +0800</pubDate>
+      
+      <guid>http://xkiller.net/post/2019/05/koa-learn-note/</guid>
+      <description>nodemon工具的使用 工具说明: 类似于前端开发，我希望node服务器运行起来之后，当我修改了我的代码之后，服务会自动重启，不需要我每次都手</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Nodejs 课程笔记</title>
+      <link>http://xkiller.net/post/2019/05/introduction-to-nodejs/</link>
+      <pubDate>Wed, 15 May 2019 01:19:41 +0800</pubDate>
+      
+      <guid>http://xkiller.net/post/2019/05/introduction-to-nodejs/</guid>
+      <description>课程的仓库地址: https://github.com/frontendmasters/intro-node-js</description>
+    </item>
+    
+    <item>
+      <title>Nodejs之nextTick vs setImmediate</title>
+      <link>http://xkiller.net/post/2019/05/nodejs-learn-note/</link>
+      <pubDate>Tue, 14 May 2019 13:49:09 +0800</pubDate>
+      
+      <guid>http://xkiller.net/post/2019/05/nodejs-learn-note/</guid>
+      <description>关于 process.nextTick 和 setImmediate 执行时机的问题： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 // 加入两个nextTick()的回调函数 process.nextTick(function () { console.log(&amp;#3</description>
+    </item>
+    
+  </channel>
+</rss>

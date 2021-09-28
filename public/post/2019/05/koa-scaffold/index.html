@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Koa 项目脚手架 - xkiller - A super concise blog for dev</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="champ" /><meta name="description" content="由于 koa 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。 koa-router" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.88.1 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://xkiller.net/post/2019/05/koa-scaffold/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Koa 项目脚手架" />
+<meta property="og:description" content="由于 koa 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。 koa-router" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xkiller.net/post/2019/05/koa-scaffold/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-05-15T17:37:34+08:00" />
+<meta property="article:modified_time" content="2019-05-15T17:37:34+08:00" />
+
+<meta itemprop="name" content="Koa 项目脚手架">
+<meta itemprop="description" content="由于 koa 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。 koa-router"><meta itemprop="datePublished" content="2019-05-15T17:37:34+08:00" />
+<meta itemprop="dateModified" content="2019-05-15T17:37:34+08:00" />
+<meta itemprop="wordCount" content="371">
+<meta itemprop="keywords" content="NodeJS,Koa," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Koa 项目脚手架"/>
+<meta name="twitter:description" content="由于 koa 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。 koa-router"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xkiller</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xkiller</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Koa 项目脚手架</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-15 </span>
+        
+          <span class="more-meta"> 371 words </span>
+          <span class="more-meta"> 1 min read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#koa-router">koa-router</a></li>
+    <li><a href="#koa-body">koa-body</a></li>
+    <li><a href="#koacors">@koa/cors</a></li>
+    <li><a href="#koa-session">koa-session</a></li>
+    <li><a href="#koa-logger">koa-logger</a></li>
+    <li><a href="#koa-compress">koa-compress</a></li>
+    <li><a href="#koa-static">koa-static</a></li>
+    <li><a href="#koa-csrf">koa-csrf</a></li>
+    <li><a href="#koa-jwt">koa-jwt</a></li>
+    <li><a href="#jsonwebtoken">jsonwebtoken</a></li>
+    <li><a href="#koa-helmet">koa-helmet</a></li>
+    <li><a href="#mongoose">mongoose</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>由于 <code>koa</code> 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。</p>
+<h2 id="koa-router">koa-router</h2>
+<p>项目地址: <a href="https://github.com/ZijianHe/koa-router">https://github.com/ZijianHe/koa-router</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-router
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koa-body">koa-body</h2>
+<p>项目地址: <a href="https://github.com/dlau/koa-body">https://github.com/dlau/koa-body</a></p>
+<p>用于解析 <code>post/put/...</code> 请求时的 <code>body</code>，支持 <code>json</code>、<code>urlenocded</code>、<code>multipart</code>等格式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-body
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koacors">@koa/cors</h2>
+<p>项目地址: <a href="https://github.com/koajs/cors">https://github.com/koajs/cors</a></p>
+<p>官方提供的<code>cors</code>跨域解决方案</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install @koa/cors
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koa-session">koa-session</h2>
+<p>项目地址: <a href="https://github.com/koajs/session">https://github.com/koajs/session</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-session
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koa-logger">koa-logger</h2>
+<p>项目地址: <a href="https://github.com/koajs/logger">https://github.com/koajs/logger</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-logger
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koa-compress">koa-compress</h2>
+<p>项目地址: <a href="https://github.com/koajs/compress">https://github.com/koajs/compress</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-compress
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koa-static">koa-static</h2>
+<p>项目地址: <a href="https://github.com/koajs/static">https://github.com/koajs/static</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-static
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koa-csrf">koa-csrf</h2>
+<p>项目地址: <a href="https://github.com/koajs/csrf">https://github.com/koajs/csrf</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-csrf
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koa-jwt">koa-jwt</h2>
+<p>项目地址: <a href="https://github.com/koajs/jwt">https://github.com/koajs/jwt</a></p>
+<p>用于验证<code>jwt</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-jwt
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意: <!-- raw HTML omitted -->
+从<code>koa-v2</code>分支之后，<code>koa-jwt</code>不再提供<code>sign</code>,<code>verify</code>,<code>decode</code>等函数<!-- raw HTML omitted -->
+因此，需要通过下面的<code>jsonwebtoken</code>来生成<code>jwt</code><!-- raw HTML omitted --></p>
+</blockquote>
+<h2 id="jsonwebtoken">jsonwebtoken</h2>
+<p>项目地址: <a href="https://github.com/auth0/node-jsonwebtoken">https://github.com/auth0/node-jsonwebtoken</a></p>
+<p>用于生成<code>jwt</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install jsonwebtoken
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="koa-helmet">koa-helmet</h2>
+<p>项目地址: <a href="https://github.com/venables/koa-helmet">https://github.com/venables/koa-helmet</a></p>
+<p>安全方面的配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install koa-static
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="mongoose">mongoose</h2>
+<p>项目地址: <a href="https://github.com/Automattic/mongoose">https://github.com/Automattic/mongoose</a></p>
+<p>MongoDB 数据库的nodejs客户端</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install mongoose
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">champ</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-05-15
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/nodejs/">NodeJS</a>
+          <a href="/tags/koa/">Koa</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2019/05/custom-hugo-even-theme/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">定制even主题</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2019/05/koa-learn-note/">
+            <span class="next-text nav-default">Koa 学习笔记</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/champkeh" class="iconfont icon-github" title="github"></a>
+  <a href="http://xkiller.net/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">champ</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
