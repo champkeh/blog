@@ -2,7 +2,7 @@
 title = "博客搭建过程"
 date = 2021-10-01T10:31:46+08:00
 description = "记录整个博客的搭建记录历史"
-draft = true
+draft = false
 tags = ["blog搭建", "自动发布", "Github Actions"]
 +++
 
@@ -11,7 +11,7 @@ tags = ["blog搭建", "自动发布", "Github Actions"]
 
 ## 关于自动发布到github
 
-> 关于采用`Github Actions`自动发布`hugo`站点，可以参考[这篇文章](https://medium.com/zendesk-engineering/a-github-actions-workflow-to-generate-publish-your-hugo-website-f36375e56cf7)
+> 关于采用`Github Actions`自动发布`hugo`站点，可以参考 [这篇文章](https://medium.com/zendesk-engineering/a-github-actions-workflow-to-generate-publish-your-hugo-website-f36375e56cf7) 和 [这篇文章](https://lifeni.life/article/deploy-with-github-actions)
 
 在项目根目录添加`.github/workflows/deploy.yml`文件，内容如下：
 ```yaml
@@ -65,3 +65,7 @@ jobs:
           FOLDER: public
           CLEAN: true
 ```
+
+## 关于主题魔改
+
+> https://lifeni.life/ 这个网站的主题感觉挺好看的，有时间可以按照这个主题改一下
