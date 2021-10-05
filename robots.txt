@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://xkiller.net/sitemap.xml
+Sitemap: https://blog.champ.design/sitemap.xml

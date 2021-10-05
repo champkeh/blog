@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github Actions on champ.design - A super concise blog for dev</title>
+    <link>https://blog.champ.design/tags/github-actions/</link>
+    <description>Recent content in Github Actions on champ.design - A super concise blog for dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Oct 2021 10:31:46 +0800</lastBuildDate><atom:link href="https://blog.champ.design/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>博客搭建过程</title>
+      <link>https://blog.champ.design/post/2021/10/blog-build-process/</link>
+      <pubDate>Fri, 01 Oct 2021 10:31:46 +0800</pubDate>
+      
+      <guid>https://blog.champ.design/post/2021/10/blog-build-process/</guid>
+      <description>采用的框架 博客采用hugo静态站点生成器，主题目前使用的是even，不过个人觉得并不是很符合我的口味，有时间还是需要魔改一下。 关于自动发布到</description>
+    </item>
+    
+  </channel>
+</rss>
