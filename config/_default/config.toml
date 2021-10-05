@@ -20,7 +20,7 @@ summaryLength = 70
 disqusShortname = ""       # disqus_shortname
 googleAnalytics = ""       # UA-XXXXXXXX-X
 copyright = ""             # default: author.name ↓        # 默认为下面配置的author.name ↓
-uglyURLs = true
+# uglyURLs = true
 
 [author]
   name = "champ"
