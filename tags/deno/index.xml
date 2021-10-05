@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>deno on champ.design - A super concise blog for dev</title>
+    <title>deno on champ的个人博客</title>
     <link>https://blog.champ.design/tags/deno/</link>
-    <description>Recent content in deno on champ.design - A super concise blog for dev</description>
+    <description>Recent content in deno on champ的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 22 May 2019 23:22:51 +0800</lastBuildDate><atom:link href="https://blog.champ.design/tags/deno/index.xml" rel="self" type="application/rss+xml" />

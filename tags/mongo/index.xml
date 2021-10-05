@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mongo on champ.design - A super concise blog for dev</title>
+    <title>mongo on champ的个人博客</title>
     <link>https://blog.champ.design/tags/mongo/</link>
-    <description>Recent content in mongo on champ.design - A super concise blog for dev</description>
+    <description>Recent content in mongo on champ的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 18 May 2019 11:24:11 +0800</lastBuildDate><atom:link href="https://blog.champ.design/tags/mongo/index.xml" rel="self" type="application/rss+xml" />

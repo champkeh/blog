@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cheetsheet on champ.design - A super concise blog for dev</title>
+    <title>cheetsheet on champ的个人博客</title>
     <link>https://blog.champ.design/tags/cheetsheet/</link>
-    <description>Recent content in cheetsheet on champ.design - A super concise blog for dev</description>
+    <description>Recent content in cheetsheet on champ的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 17 May 2019 13:21:43 +0800</lastBuildDate><atom:link href="https://blog.champ.design/tags/cheetsheet/index.xml" rel="self" type="application/rss+xml" />
