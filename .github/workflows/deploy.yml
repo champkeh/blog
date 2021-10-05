@@ -37,7 +37,7 @@ jobs:
 
       # Step 5 - Create name file
       - name: Create cname file
-        run: echo 'freshswift.net' > public/CNAME
+        run: echo 'blog.champ.design' > public/CNAME
 
       # Step 6 - Push our generated site to our gh-pages branch
       - name: Deploy
