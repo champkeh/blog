@@ -13,7 +13,8 @@
       <pubDate>Fri, 17 May 2019 13:21:43 +0800</pubDate>
       
       <guid>https://blog.champ.design/post/2019/05/mac-cheat-sheet/</guid>
-      <description>微调音量 Shift + Option + 音量键 可以以 1/4 倍调整音量，实现更精细的控制音量 删除键 1 2 3 4 5 单按 delete 删除光标之前的一个字符（默认） 组合 `fn + delete`，删</description>
+      <description>微调音量 Shift + Option + 音量键 可以以 1/4 倍调整音量，实现更精细的控制音量
+删除键 1 2 3 4 5  单按 delete 删除光标之前的一个字符（默认） 组合 `fn + delete`，删除光标之后的一个字符 组合`option + delete`，删除光标之前的一个单词(英文有效) 组合`fn + option + delete`，删除光标之后的一个单词 组合`command + delete`，删除文件   </description>
     </item>
     
   </channel>

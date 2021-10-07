@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>目标 · champ的个人博客</title>
+  <title>champ的个人博客</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -32,8 +32,8 @@
 <meta name="generator" content="Hugo 0.88.1" />
 
 
-<link rel="canonical" href="https://blog.champ.design/tags/%E7%9B%AE%E6%A0%87/" />
-<link href="/tags/%E7%9B%AE%E6%A0%87/index.xml" rel="alternate" type="application/rss+xml" title="champ的个人博客" />
+<link rel="canonical" href="https://blog.champ.design/" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml" title="champ的个人博客" />
 
 
 
@@ -56,14 +56,14 @@
 
 
 
-<meta property="og:title" content="目标" />
+<meta property="og:title" content="champ的个人博客" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.champ.design/tags/%E7%9B%AE%E6%A0%87/" />
+<meta property="og:url" content="https://blog.champ.design/" />
 
-<meta itemprop="name" content="目标">
+<meta itemprop="name" content="champ的个人博客">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="目标"/>
+<meta name="twitter:title" content="champ的个人博客"/>
 <meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
@@ -134,27 +134,83 @@
       <div class="content-wrapper">
         <div id="content" class="content container">
           
-
-<section id="archive" class="archive">
+<section id="posts" class="posts">
+  
   
     
-      <div class="archive-title tag">
-        <h2 class="archive-name">Tag: 目标</h2>
-      </div>
+  
+  
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/2019/05/nodejs-learn-note/">Nodejs之nextTick vs setImmediate</a>
+    </h1>
     
-  
-
-  
-    <div class="archive-post">
-      <time datetime="2021-10-01" class="archive-post-time">
-        2021-10-01
+    <div class="post-meta">
+      <time datetime="2019-05-14" class="post-time">
+        2019-05-14
       </time>
-      <span class="archive-post-title">
-        <a href="/post/2021/goal/" class="archive-post-link">
-          2021年目标
-        </a>
-      </span>
+      
+      
+      
+      
     </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      关于 process.nextTick 和 setImmediate 执行时机的问题：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  // 加入两个nextTick()的回调函数 process.nextTick(function () { console.log(&#39;nextTick延迟执行1&#39;); }); process.nextTick(function () { console.log(&#39;nextTick延迟执行2&#39;); }); // 加入两个setImmediate()的回调函数 setImmediate(function () { console.log(&#39;setImmediate延迟执行1&#39;); // 进入下次循环  process.nextTick(function () { console.log(&#39;强势插入&#39;); }); }); setImmediate(function () { console.log(&#39;setImmediate延迟执行2&#39;); }); console.log(&#39;正常执行&#39;);   《nodejs深入浅出》的3.4章中的代码执行结果如下：
+1 2 3 4 5 6  正常执行 nextTick延迟执行1 nextTick延迟执行2 setImmediate延迟执行1 强势插入 setImmediate延迟执行2   参见
+    </div>
+    <div class="read-more">
+      <a href="/post/2019/05/nodejs-learn-note/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/2019/05/setup-your-own-git-server/">搭建自己的git服务器</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-05-13" class="post-time">
+        2019-05-13
+      </time>
+      
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      环境: server: ubuntu 16.4
+第一步，安装git: sudo apt-get install git
+第二步，创建一个git用户，用来运行git服务： sudo adduser git
+第三步，创建证书登录： 收集所有需要登录的用户的公钥，导入到 /home/git/.ssh/authorized_keys 文件中，一行一个。
+第四步，初始化git裸仓库： cd /srv sudo git init &ndash;bare blog.git sudo chown -R git:git blog.git
+第五步，禁用shell登录： 编辑 /etc/passwd 文件，如下：
+1 2  git:x:1001:1001:,,,:/home/git:/bin/bash git:x:1001:1001:,,,:/home/git:/user/bin/git-shell   第六步，克隆远程仓库： git clone git@server:/srv/blog.git
+第七步，设置本地仓库的origin： 如果先有本地仓库，后有服务器的裸仓库，可以设置本地仓库的origin:
+    </div>
+    <div class="read-more">
+      <a href="/post/2019/05/setup-your-own-git-server/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
   
 </section>
 
@@ -175,6 +231,22 @@
 
   
   
+
+  
+  
+  <nav class="pagination">
+    <ul>
+      
+      <li >
+        <a href="/">1</a>
+      </li>
+      
+      <li  class="active" >
+        <a href="/page/2/">2</a>
+      </li>
+      
+    </ul>
+  </nav>
 
   
   

@@ -13,7 +13,16 @@
       <pubDate>Wed, 15 May 2019 17:37:34 +0800</pubDate>
       
       <guid>https://blog.champ.design/post/2019/05/koa-scaffold/</guid>
-      <description>由于 koa 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。 koa-router</description>
+      <description>由于 koa 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。
+koa-router 项目地址: https://github.com/ZijianHe/koa-router
+1  npm install koa-router   koa-body 项目地址: https://github.com/dlau/koa-body
+用于解析 post/put/... 请求时的 body，支持 json、urlenocded、multipart等格式。
+1  npm install koa-body   @koa/cors 项目地址: https://github.com/koajs/cors
+官方提供的cors跨域解决方案
+1  npm install @koa/cors   koa-session 项目地址: https://github.com/koajs/session
+1  npm install koa-session   koa-logger 项目地址: https://github.com/koajs/logger
+1  npm install koa-logger   koa-compress 项目地址: https://github.com/koajs/compress
+1  npm install koa-compress   koa-static 项目地址: https://github.</description>
     </item>
     
     <item>
@@ -22,7 +31,11 @@
       <pubDate>Wed, 15 May 2019 10:40:36 +0800</pubDate>
       
       <guid>https://blog.champ.design/post/2019/05/koa-learn-note/</guid>
-      <description>nodemon工具的使用 工具说明: 类似于前端开发，我希望node服务器运行起来之后，当我修改了我的代码之后，服务会自动重启，不需要我每次都手</description>
+      <description>nodemon工具的使用 工具说明: 类似于前端开发，我希望node服务器运行起来之后，当我修改了我的代码之后，服务会自动重启，不需要我每次都手动重启服务。
+项目地址: https://github.com/remy/nodemon
+1 2  $ node install -g nodemon #全局安装 $ nodemon app.js #用 nodemon 替代 node 来启动应用   关于Generator 在老的教程中，中间件的写法会有很多生成器函数的用法，比如:
+1 2 3 4 5  app.use(function* (next) { console.log(&amp;#34;1&amp;#34;); yield next; console.log(&amp;#34;2&amp;#34;); });   在koa的v2版中，写法发生了变化:
+1 2 3 4 5  app.use(async (ctx, next) =&amp;gt; { console.log(&amp;#34;1&amp;#34;); await next(); console.log(&amp;#34;2&amp;#34;); })    不知道这个是不是只是一个语法的问题，抽时间需要研究一下。 附上es6 generator的教程 MDN function*语法 阮一峰的文章 introduction to koa generator</description>
     </item>
     
   </channel>

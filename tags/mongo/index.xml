@@ -13,7 +13,8 @@
       <pubDate>Sat, 18 May 2019 11:24:11 +0800</pubDate>
       
       <guid>https://blog.champ.design/post/2019/05/mongo-learn-note-1/</guid>
-      <description>启动一个 MongoDB 服务器容器 1 2 $ docker pull mongo:4 $ docker run --name mymongo -v /data/docker-db:/data/db -d mongo:4 启动 Mongo Express 容器 1 2 $ docker pull mongo-express $ docker run --link mymongo:mongo -p 8081:8081 -d mongo-express 在浏览器打开 http://localhost:8</description>
+      <description>启动一个 MongoDB 服务器容器 1 2  $ docker pull mongo:4 $ docker run --name mymongo -v /data/docker-db:/data/db -d mongo:4   启动 Mongo Express 容器 1 2  $ docker pull mongo-express $ docker run --link mymongo:mongo -p 8081:8081 -d mongo-express   在浏览器打开 http://localhost:8081，mongo-expres 的界面如下:
+启动 Mongo shell 1  $ docker exec -it mymongo mongo   文档的基本操作 1 2 3 4 5 6 7 8 9 10 11 12  # 查看所有数据库 &amp;gt; show dbs admin 0.</description>
     </item>
     
   </channel>
