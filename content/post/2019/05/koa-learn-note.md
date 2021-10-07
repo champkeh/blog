@@ -38,13 +38,12 @@ app.use(async (ctx, next) => {
 })
 ```
 
-> 不知道这个是不是只是一个语法的问题，抽时间需要研究一下。<br>
-> <br>
-> 附上es6 generator的教程<br>
-> [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators)<br>
-> [function*语法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)<br>
-> [阮一峰的文章](http://es6.ruanyifeng.com/#docs/generator)<br>
-> [introduction to koa generator](https://blog.risingstack.com/introduction-to-koa-generators/)<br>
+> 不知道这个是不是只是一个语法的问题，抽时间需要研究一下。
+> 附上es6 generator的教程
+> [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators)
+> [function*语法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
+> [阮一峰的文章](http://es6.ruanyifeng.com/#docs/generator)
+> [introduction to koa generator](https://blog.risingstack.com/introduction-to-koa-generators/)
 
 
 ## 关于 async/await 与 Promise
@@ -95,5 +94,5 @@ function foo() {
 ```
 
 ## 参考
-[tutorial spoint](https://www.tutorialspoint.com/koajs/index.htm)<br>
-[koajs/examples](https://github.com/koajs/examples)<br>
+[tutorial spoint](https://www.tutorialspoint.com/koajs/index.htm)
+[koajs/examples](https://github.com/koajs/examples)
