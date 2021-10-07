@@ -6,15 +6,30 @@ title = "champ的个人博客"
 # enableRobotsTXT = true
 # enableEmoji = true
 # enableGitInfo = false                 # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
-# theme = "jane"
+theme = "jane"
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
-# pygmentsOptions = "linenos=table"
-# pygmentsCodefences = true
-# pygmentsUseClasses = true
-# pygmentsCodefencesGuessSyntax = true
+pygmentsOptions = "linenos=table"
+pygmentsCodefences = true
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
 
-# hasCJKLanguage = true
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = 'monokai'
+    tabWidth = 4
+
+
+hasCJKLanguage = true
 # paginate = 10              # 首页每页显示的文章数
 # summaryLength = 70
 # disqusShortname = ""       # disqus_shortname
