@@ -6,8 +6,10 @@
 
 <p>Kind: {{ .Kind }}</p>
 
-{{ .IsSection }}
+<p>.Date {{ .Date }}</p>
+<p>.Lastmod {{ .Lastmod }}</p>
 
+<h3>Pages</h3>
 <ul>
     {{ range .Pages }}
     <li><a href="{{ .RelPermalink }}">{{ .Title }} ({{ .Kind }})</a></li>
