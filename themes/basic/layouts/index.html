@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+{{ .Content }}
+
+<section>
+    <h3>Most recent project:</h3>
+
+    <ul>
+        {{ range first 1 (where .Site.RegularPages "Type" "in" "projects").ByDate.Reverse }}
+        <li>
+            <a href="{{.RelPermalink}}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</section>
+
+<section>
+    <h3>Most recent presentation:</h3>
+
+    <ul>
+        {{ range first 1 (where .Site.RegularPages "Type" "in" "presentations").ByDate.Reverse }}
+        <li>
+            <a href="{{.RelPermalink}}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</section>
+
+<section>
+    <h3>Most recent post:</h3>
+
+    <ul>
+        {{ range first 1 (where .Site.RegularPages "Type" "in" "posts").ByDate.Reverse }}
+        <li>
+            <a href="{{.RelPermalink}}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</section>
+
+{{ end }}

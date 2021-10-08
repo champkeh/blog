@@ -1,0 +1,42 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+        {{- if .Page.IsHome -}}
+            {{ .Site.Title }}
+        {{- else -}}
+            {{ .Title }} - {{ .Site.Title }}
+        {{- end -}}
+    </title>
+    <meta name="author" content="{{ .Site.Params.author }}">
+    <meta name="description" content="
+{{- with .Page.Description -}}
+    {{ . }}
+{{- else -}}
+    {{ .Site.Params.description }}
+{{- end -}}
+">
+    <meta name="keywords" content="
+{{- with .Page.Params.keywords -}}
+    {{ . }}
+{{- else -}}
+    {{ .Site.Params.keywords }}
+{{- end -}}
+">
+    {{ $css := resources.Get "css/style.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    {{ $css := resources.Get "css/syntax.css" | minify }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    {{ template "_internal/google_analytics_async.html" . }}
+
+    {{ range .AlternativeOutputFormats -}}
+        {{- $link := `<link rel="%s" type="%s" href="%s" title="%s">` -}}
+        {{- $title := printf "%s - %s" $.Page.Title $.Site.Title -}}
+
+        {{- if $.Page.IsHome -}}
+            {{ $title = $.Site.Title }}
+        {{- end -}}
+
+        {{ printf $link .Rel .MediaType.Type .Permalink $title | safeHTML }}
+    {{- end }}
+</head>

@@ -1,18 +1,22 @@
 baseURL = "https://blog.champ.design/"
 languageCode = "en"
 defaultContentLanguage = "en"         # en / zh-cn / ... (This field determines which i18n file to use)
-title = "champ的个人博客"
+title = "champ的个人博客12"
 # preserveTaxonomyNames = true
 # enableRobotsTXT = true
 # enableEmoji = true
-# enableGitInfo = false                 # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
-theme = "jane"
+enableGitInfo = true                 # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
+theme = "basic"
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
 pygmentsOptions = "linenos=table"
 pygmentsCodefences = true
 pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
+
+[params]
+  name = 'champ'
+  age = 30
 
 [markup]
   [markup.highlight]
@@ -32,39 +36,41 @@ pygmentsCodefencesGuessSyntax = true
 hasCJKLanguage = true
 # paginate = 10              # 首页每页显示的文章数
 # summaryLength = 70
-# disqusShortname = ""       # disqus_shortname
-# googleAnalytics = ""       # UA-XXXXXXXX-X
+# disqusShortname = "abc"       # disqus_shortname
+# googleAnalytics = "123"       # UA-XXXXXXXX-X
 # copyright = ""             # default: author.name ↓        # 默认为下面配置的author.name ↓
 # uglyURLs = true
 
-# [author]
-#   name = "champ"
+[author]
+  name = "champ"
+  age = 30
+  name = "john"
 
 # [sitemap]
 #   changefreq = "weekly"
 #   priority = 0.5
 #   filename = "sitemap.xml"
 
-# [[menu.main]]             # config your menu              # 配置目录
-#   name = "Home"
-#   weight = 10
-#   identifier = "home"
-#   url = "/"
-# [[menu.main]]
-#   name = "Archives"
-#   weight = 20
-#   identifier = "archives"
-#   url = "/post/"
-# [[menu.main]]
-#   name = "Tags"
-#   weight = 30
-#   identifier = "tags"
-#   url = "/tags/"
-# [[menu.main]]
-#   name = "Categories"
-#   weight = 40
-#   identifier = "categories"
-#   url = "/categories/"
+[[menu.main]]             # config your menu              # 配置目录
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "Archives"
+  weight = 20
+  identifier = "archives"
+  url = "/post/"
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+[[menu.main]]
+  name = "Categories"
+  weight = 40
+  identifier = "categories"
+  url = "/categories/"
 
 # [params]
 #   version = "4.x"           # Used to give a friendly message when you have an incompatible update
