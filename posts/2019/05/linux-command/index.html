@@ -1,0 +1,116 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Linux常用命令 - champ的个人博客</title>
+<meta name=author content>
+<meta name=description content>
+<meta name=keywords content>
+<link rel=stylesheet href=/css/style.min.b908753a478f761f9a0df0ec665700540a93ad739231fe7fec77c93add17da8e.css>
+<link rel=stylesheet href=/css/syntax.min.css>
+</head>
+<body>
+<div class=container><header>
+<h1>champ的个人博客</h1>
+</header>
+<nav>
+<a href=/>Home</a>
+<a href=/posts>Blog</a>
+<a href=/demos>Demos</a>
+</nav>
+<main>
+<article class=post>
+<header>
+<h2>Linux常用命令</h2>
+<p>By </p>
+<p>
+Posted May 15, 2019
+<span class=tags>
+in
+<a href=/tags/linux class=tag>linux</a>
+<a href=/tags/command class=tag>command</a>
+</span>
+</p>
+<p>Reading time: 2 minutes.</p>
+</header>
+<section class=body>
+<h2 id=清空文件内容>清空文件内容</h2>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ &gt; filename     <span style=color:#60a0b0;font-style:italic>#这个命令执行完之后，不会自动退出，需要按Ctrl+D结束</span>
+$ : &gt; filename  <span style=color:#60a0b0;font-style:italic>#我最常用的，:是一个占位符，不产生任何输出</span>
+$ <span style=color:#007020>echo</span> <span style=color:#4070a0>&#39;&#39;</span> &gt; filename
+$ <span style=color:#007020>echo</span> /dev/null &gt; filename
+$ <span style=color:#007020>echo</span> &gt; filename
+$ cat /dev/null &gt; filename
+$ cp /dev/null filename
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>关于上面几个命令的解释：</p>
+<ol>
+<li><code>> filename</code>的意思是，从标准输入中读取内容并写入到文件<code>filename</code>中，执行完该命令之后，需要立即执行<code>Ctrl+D</code>表示结束输入，因为此时并没有输入任何内容，所以文件就被清空了。</li>
+<li><code>: > filename</code>是上面的改进版，不需要手动执行<code>Ctrl+D</code></li>
+</ol>
+</blockquote>
+<h2 id=按照时间删除文件>按照时间删除文件</h2>
+<p>有时候，我会不小心把整个目录下的所有文件上传到服务器上的一个错误的目录下，然后想删除刚上传的文件。但是登录到服务器之后，发现这个目录下不仅仅是刚上传的文件，还有之前就存在的一些文件。而我又不能把这个目录下的所有文件都删除掉，我只想删除刚刚上传的那些文件，也就是说，我只想删除刚刚修改的文件。截图如下:</p>
+<p><img src=/images/linux-command-img1.png alt></p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>find . -mtime -10 <span style=color:#60a0b0;font-style:italic>#查找当前目录下，10天内修改过的所有文件</span>
+find . -mtime -10 -exec rm -Rf <span style=color:#666>{}</span> <span style=color:#4070a0;font-weight:700>\;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=rsync-使用自定义-ssh-key-进行发布>rsync 使用自定义 ssh key 进行发布</h2>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>rsync -Pav public/ ubuntu@tencent:/var/www/xkiller
+</code></pre></td></tr></table>
+</div>
+</div>
+</section>
+<section class=related>
+</section>
+<aside>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#清空文件内容>清空文件内容</a></li>
+<li><a href=#按照时间删除文件>按照时间删除文件</a></li>
+<li><a href=#rsync-使用自定义-ssh-key-进行发布>rsync 使用自定义 ssh key 进行发布</a></li>
+</ul>
+</nav>
+</aside>
+Prev: <a href=/posts/2019/05/nodejs-learn-note/>Page(/posts/2019/05/nodejs-learn-note.md)</a>
+Next: <a href=/posts/2019/05/koa-learn-note/>Page(/posts/2019/05/koa-learn-note.md)</a>
+<section class=comments>
+<h3>Comments</h3>
+</section>
+</article>
+</main><footer>
+<small>Copyright 2021 .</small>
+<p>
+Powered by <br>
+<a href=https://gohugo.io>
+<img src=/images/hugo-logo-wide.svg width=128 height=38 alt>
+</a>
+</p>
+</footer>
+</div>
+</body>
+</html>

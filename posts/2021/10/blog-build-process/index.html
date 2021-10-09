@@ -1,0 +1,184 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>博客搭建过程 - champ的个人博客</title>
+<meta name=author content>
+<meta name=description content="记录整个博客的搭建记录历史">
+<meta name=keywords content>
+<link rel=stylesheet href=/css/style.min.b908753a478f761f9a0df0ec665700540a93ad739231fe7fec77c93add17da8e.css>
+<link rel=stylesheet href=/css/syntax.min.css>
+</head>
+<body>
+<div class=container><header>
+<h1>champ的个人博客</h1>
+</header>
+<nav>
+<a href=/>Home</a>
+<a href=/posts>Blog</a>
+<a href=/demos>Demos</a>
+</nav>
+<main>
+<article class=post>
+<header>
+<h2>博客搭建过程</h2>
+<p>By </p>
+<p>
+Posted October 1, 2021
+<span class=tags>
+in
+<a href=/tags/blog%E6%90%AD%E5%BB%BA class=tag>blog搭建</a>
+<a href=/tags/%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83 class=tag>自动发布</a>
+<a href=/tags/github-actions class=tag>Github Actions</a>
+</span>
+</p>
+<p>Reading time: 2 minutes.</p>
+</header>
+<section class=body>
+<h2 id=采用的框架>采用的框架</h2>
+<p>博客采用<code>hugo</code>静态站点生成器，主题目前使用的是<code>jane</code>，不过个人觉得并不是很符合我的口味，有时间还是需要魔改一下。</p>
+<h2 id=关于自动发布到github>关于自动发布到github</h2>
+<blockquote>
+<p>关于采用<code>Github Actions</code>自动发布<code>hugo</code>站点，可以参考 <a href=https://medium.com/zendesk-engineering/a-github-actions-workflow-to-generate-publish-your-hugo-website-f36375e56cf7 target=_blank rel=noopener>这篇文章</a>
+和 <a href=https://lifeni.life/article/deploy-with-github-actions target=_blank rel=noopener>这篇文章</a>
+</p>
+</blockquote>
+<p>在项目根目录添加<code>.github/workflows/deploy.yml</code>文件，内容如下：</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#60a0b0;font-style:italic># Workflow to build and deploy site to Github Pages using Hugo</span><span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Build and Deploy Blog site<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#062873;font-weight:700>on</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:#062873;font-weight:700>push</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#062873;font-weight:700>branches</span>:<span style=color:#bbb> </span>[<span style=color:#bbb> </span>master ]<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#062873;font-weight:700>jobs</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:#062873;font-weight:700>build-and-deploy</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    
+</span><span style=color:#bbb>    </span><span style=color:#062873;font-weight:700>runs-on</span>:<span style=color:#bbb> </span>ubuntu-latest<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#062873;font-weight:700>steps</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 1 - Checks-out your repository under $GITHUB_WORKSPACE</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Checkout<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>uses</span>:<span style=color:#bbb> </span>actions/checkout@v2<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>submodules</span>:<span style=color:#bbb> </span><span style=color:#007020;font-weight:700>true</span><span style=color:#bbb>  </span><span style=color:#60a0b0;font-style:italic># Fetch Hugo themes</span><span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>fetch-depth</span>:<span style=color:#bbb> </span><span style=color:#40a070>0</span><span style=color:#bbb>    </span><span style=color:#60a0b0;font-style:italic># Fetch all history for .GitInfo and .Lastmod</span><span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 2 - Sets up the latest version of Hugo</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Setup Hugo<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>uses</span>:<span style=color:#bbb> </span>peaceiris/actions-hugo@v2<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>hugo-version</span>:<span style=color:#bbb> </span><span style=color:#4070a0>&#39;latest&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 3 - Clean and don&#39;t fail</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Clean public directory<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>run</span>:<span style=color:#bbb> </span>rm -rf public<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 4 - Builds the site using the latest version of Hugo</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Also specifies the theme we want to use</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Build<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>run</span>:<span style=color:#bbb> </span>hugo --theme=jane<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 5 - Create name file</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Create cname file<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>run</span>:<span style=color:#bbb> </span>echo &#39;blog.champ.design&#39; &gt; public/CNAME<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 6 - Push our generated site to our gh-pages branch</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Deploy<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>uses</span>:<span style=color:#bbb> </span>JamesIves/github-pages-deploy-action@3.7.1<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>ACCESS_TOKEN</span>:<span style=color:#bbb> </span>${{ secrets.GITHUB_TOKEN }}<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>BRANCH</span>:<span style=color:#bbb> </span>gh-pages<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>FOLDER</span>:<span style=color:#bbb> </span>public<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>CLEAN</span>:<span style=color:#bbb> </span><span style=color:#007020;font-weight:700>true</span><span style=color:#bbb>
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id=关于主题魔改>关于主题魔改</h2>
+<blockquote>
+<p><a href=https://lifeni.life/ target=_blank rel=noopener>https://lifeni.life/</a>
+这个网站的主题感觉挺好看的，有时间可以按照这个主题改一下</p>
+</blockquote>
+</section>
+<section class=related>
+</section>
+<aside>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#采用的框架>采用的框架</a></li>
+<li><a href=#关于自动发布到github>关于自动发布到github</a></li>
+<li><a href=#关于主题魔改>关于主题魔改</a></li>
+</ul>
+</nav>
+</aside>
+Prev: <a href=/posts/2019/05/deno_install_explain/>Page(/posts/2019/05/deno_install_explain.md)</a>
+Next: <a href=/posts/2021/goal/>Page(/posts/2021/goal.md)</a>
+<section class=comments>
+<h3>Comments</h3>
+</section>
+</article>
+</main><footer>
+<small>Copyright 2021 .</small>
+<p>
+Powered by <br>
+<a href=https://gohugo.io>
+<img src=/images/hugo-logo-wide.svg width=128 height=38 alt>
+</a>
+</p>
+</footer>
+</div>
+</body>
+</html>

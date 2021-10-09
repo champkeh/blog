@@ -1,0 +1,219 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Koa 学习笔记 - champ的个人博客</title>
+<meta name=author content>
+<meta name=description content>
+<meta name=keywords content>
+<link rel=stylesheet href=/css/style.min.b908753a478f761f9a0df0ec665700540a93ad739231fe7fec77c93add17da8e.css>
+<link rel=stylesheet href=/css/syntax.min.css>
+</head>
+<body>
+<div class=container><header>
+<h1>champ的个人博客</h1>
+</header>
+<nav>
+<a href=/>Home</a>
+<a href=/posts>Blog</a>
+<a href=/demos>Demos</a>
+</nav>
+<main>
+<article class=post>
+<header>
+<h2>Koa 学习笔记</h2>
+<p>By </p>
+<p>
+Posted May 15, 2019
+<span class=tags>
+in
+<a href=/tags/nodejs class=tag>nodejs</a>
+<a href=/tags/koa class=tag>koa</a>
+</span>
+</p>
+<p>Reading time: 2 minutes.</p>
+</header>
+<section class=body>
+<h2 id=nodemon工具的使用>nodemon工具的使用</h2>
+<p>工具说明: 类似于前端开发，我希望node服务器运行起来之后，当我修改了我的代码之后，服务会自动重启，不需要我每次都手动重启服务。</p>
+<p>项目地址: <a href=https://github.com/remy/nodemon target=_blank rel=noopener>https://github.com/remy/nodemon</a>
+</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ node install -g nodemon <span style=color:#60a0b0;font-style:italic>#全局安装</span>
+$ nodemon app.js <span style=color:#60a0b0;font-style:italic>#用 nodemon 替代 node 来启动应用</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=关于generator>关于Generator</h2>
+<p>在老的教程中，中间件的写法会有很多生成器函数的用法，比如:</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(<span style=color:#007020;font-weight:700>function</span><span style=color:#666>*</span> (next) {
+    console.log(<span style=color:#4070a0>&#34;1&#34;</span>);
+    <span style=color:#007020;font-weight:700>yield</span> next;
+    console.log(<span style=color:#4070a0>&#34;2&#34;</span>);
+});
+</code></pre></td></tr></table>
+</div>
+</div><p>在koa的v2版中，写法发生了变化:</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>app.use(<span style=color:#007020;font-weight:700>async</span> (ctx, next) =&gt; {
+    console.log(<span style=color:#4070a0>&#34;1&#34;</span>);
+    <span style=color:#007020;font-weight:700>await</span> next();
+    console.log(<span style=color:#4070a0>&#34;2&#34;</span>);
+})
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>不知道这个是不是只是一个语法的问题，抽时间需要研究一下。
+附上es6 generator的教程
+<a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators target=_blank rel=noopener>MDN</a>
+<a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function* target=_blank rel=noopener>function*语法</a>
+<a href=http://es6.ruanyifeng.com/#docs/generator target=_blank rel=noopener>阮一峰的文章</a>
+<a href=https://blog.risingstack.com/introduction-to-koa-generators/ target=_blank rel=noopener>introduction to koa generator</a>
+</p>
+</blockquote>
+<h2 id=关于-asyncawait-与-promise>关于 async/await 与 Promise</h2>
+<p>async/await 是 Promise 的语法糖，向👇看:
+下面这两个函数是等价的:</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#007020;font-weight:700>async</span> <span style=color:#007020;font-weight:700>function</span> foo() {
+    <span style=color:#007020;font-weight:700>return</span> <span style=color:#40a070>42</span>;
+}
+
+<span style=color:#007020;font-weight:700>function</span> foo() {
+    <span style=color:#007020;font-weight:700>return</span> <span style=color:#007020;font-weight:700>new</span> <span style=color:#007020>Promise</span>((resolve, reject) =&gt; {
+        resolve(<span style=color:#40a070>42</span>);
+    });
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>在 <code>async</code> 函数里面抛的错误，会出现在 <code>rejected promise</code> 中:</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#007020;font-weight:700>async</span> <span style=color:#007020;font-weight:700>function</span> foo() {
+    <span style=color:#007020;font-weight:700>throw</span> <span style=color:#007020;font-weight:700>new</span> <span style=color:#007020>Error</span>(<span style=color:#4070a0>&#39;oops!&#39;</span>);
+}
+
+<span style=color:#007020;font-weight:700>function</span> foo() {
+    <span style=color:#007020;font-weight:700>return</span> <span style=color:#007020;font-weight:700>new</span> <span style=color:#007020>Promise</span>((resolve, reject) =&gt; {
+        reject(<span style=color:#007020;font-weight:700>new</span> <span style=color:#007020>Error</span>(<span style=color:#4070a0>&#39;oops!&#39;</span>));
+    });
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>另外，在 <code>async</code> 函数中，我们可以使用 <code>await</code> 关键字去等待另一个 <code>promised</code> 函数返回，然后把结果赋给一个局部变量:</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#007020;font-weight:700>async</span> <span style=color:#007020;font-weight:700>function</span> foo() {
+    <span style=color:#007020;font-weight:700>const</span> userId <span style=color:#666>=</span> <span style=color:#40a070>42</span>;
+    <span style=color:#007020;font-weight:700>const</span> user <span style=color:#666>=</span> <span style=color:#007020;font-weight:700>await</span> User.findById(userId);
+
+    <span style=color:#007020;font-weight:700>return</span> user.name;
+}
+
+<span style=color:#007020;font-weight:700>function</span> foo() {
+    <span style=color:#007020;font-weight:700>const</span> userId <span style=color:#666>=</span> <span style=color:#40a070>42</span>;
+
+    <span style=color:#007020;font-weight:700>return</span> User.findById(userId).then(user =&gt; {
+        <span style=color:#007020;font-weight:700>return</span> user.name;
+    });
+}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=参考>参考</h2>
+<p><a href=https://www.tutorialspoint.com/koajs/index.htm target=_blank rel=noopener>tutorial spoint</a>
+<a href=https://github.com/koajs/examples target=_blank rel=noopener>koajs/examples</a>
+</p>
+</section>
+<section class=related>
+<h3>Related pages</h3>
+<ul>
+<li><a href=/posts/2019/05/nodejs-learn-note/>Nodejs之nextTick vs setImmediate</a></li>
+</ul>
+</section>
+<aside>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#nodemon工具的使用>nodemon工具的使用</a></li>
+<li><a href=#关于generator>关于Generator</a></li>
+<li><a href=#关于-asyncawait-与-promise>关于 async/await 与 Promise</a></li>
+<li><a href=#参考>参考</a></li>
+</ul>
+</nav>
+</aside>
+Prev: <a href=/posts/2019/05/linux-command/>Page(/posts/2019/05/linux-command.md)</a>
+Next: <a href=/posts/2019/05/koa-scaffold/>Page(/posts/2019/05/koa-scaffold.md)</a>
+<section class=comments>
+<h3>Comments</h3>
+</section>
+</article>
+</main><footer>
+<small>Copyright 2021 .</small>
+<p>
+Powered by <br>
+<a href=https://gohugo.io>
+<img src=/images/hugo-logo-wide.svg width=128 height=38 alt>
+</a>
+</p>
+</footer>
+</div>
+</body>
+</html>

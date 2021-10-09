@@ -1,0 +1,224 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Koa 项目脚手架 - champ的个人博客</title>
+<meta name=author content>
+<meta name=description content>
+<meta name=keywords content>
+<link rel=stylesheet href=/css/style.min.b908753a478f761f9a0df0ec665700540a93ad739231fe7fec77c93add17da8e.css>
+<link rel=stylesheet href=/css/syntax.min.css>
+</head>
+<body>
+<div class=container><header>
+<h1>champ的个人博客</h1>
+</header>
+<nav>
+<a href=/>Home</a>
+<a href=/posts>Blog</a>
+<a href=/demos>Demos</a>
+</nav>
+<main>
+<article class=post>
+<header>
+<h2>Koa 项目脚手架</h2>
+<p>By </p>
+<p>
+Posted May 15, 2019
+<span class=tags>
+in
+<a href=/tags/nodejs class=tag>nodejs</a>
+<a href=/tags/koa class=tag>koa</a>
+</span>
+</p>
+<p>Reading time: 2 minutes.</p>
+</header>
+<section class=body>
+<p>由于 <code>koa</code> 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。</p>
+<h2 id=koa-router>koa-router</h2>
+<p>项目地址: <a href=https://github.com/ZijianHe/koa-router target=_blank rel=noopener>https://github.com/ZijianHe/koa-router</a>
+</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-router
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koa-body>koa-body</h2>
+<p>项目地址: <a href=https://github.com/dlau/koa-body target=_blank rel=noopener>https://github.com/dlau/koa-body</a>
+</p>
+<p>用于解析 <code>post/put/...</code> 请求时的 <code>body</code>，支持 <code>json</code>、<code>urlenocded</code>、<code>multipart</code>等格式。</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-body
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koacors>@koa/cors</h2>
+<p>项目地址: <a href=https://github.com/koajs/cors target=_blank rel=noopener>https://github.com/koajs/cors</a>
+</p>
+<p>官方提供的<code>cors</code>跨域解决方案</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install @koa/cors
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koa-session>koa-session</h2>
+<p>项目地址: <a href=https://github.com/koajs/session target=_blank rel=noopener>https://github.com/koajs/session</a>
+</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-session
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koa-logger>koa-logger</h2>
+<p>项目地址: <a href=https://github.com/koajs/logger target=_blank rel=noopener>https://github.com/koajs/logger</a>
+</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-logger
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koa-compress>koa-compress</h2>
+<p>项目地址: <a href=https://github.com/koajs/compress target=_blank rel=noopener>https://github.com/koajs/compress</a>
+</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-compress
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koa-static>koa-static</h2>
+<p>项目地址: <a href=https://github.com/koajs/static target=_blank rel=noopener>https://github.com/koajs/static</a>
+</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-static
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koa-csrf>koa-csrf</h2>
+<p>项目地址: <a href=https://github.com/koajs/csrf target=_blank rel=noopener>https://github.com/koajs/csrf</a>
+</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-csrf
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koa-jwt>koa-jwt</h2>
+<p>项目地址: <a href=https://github.com/koajs/jwt target=_blank rel=noopener>https://github.com/koajs/jwt</a>
+</p>
+<p>用于验证<code>jwt</code></p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-jwt
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意:
+从<code>koa-v2</code>分支之后，<code>koa-jwt</code>不再提供<code>sign</code>,<code>verify</code>,<code>decode</code>等函数
+因此，需要通过下面的<code>jsonwebtoken</code>来生成<code>jwt</code></p>
+</blockquote>
+<h2 id=jsonwebtoken>jsonwebtoken</h2>
+<p>项目地址: <a href=https://github.com/auth0/node-jsonwebtoken target=_blank rel=noopener>https://github.com/auth0/node-jsonwebtoken</a>
+</p>
+<p>用于生成<code>jwt</code></p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install jsonwebtoken
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=koa-helmet>koa-helmet</h2>
+<p>项目地址: <a href=https://github.com/venables/koa-helmet target=_blank rel=noopener>https://github.com/venables/koa-helmet</a>
+</p>
+<p>安全方面的配置</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install koa-static
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=mongoose>mongoose</h2>
+<p>项目地址: <a href=https://github.com/Automattic/mongoose target=_blank rel=noopener>https://github.com/Automattic/mongoose</a>
+</p>
+<p>MongoDB 数据库的nodejs客户端</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install mongoose
+</code></pre></td></tr></table>
+</div>
+</div>
+</section>
+<section class=related>
+<h3>Related pages</h3>
+<ul>
+<li><a href=/posts/2019/05/koa-learn-note/>Koa 学习笔记</a></li>
+<li><a href=/posts/2019/05/nodejs-learn-note/>Nodejs之nextTick vs setImmediate</a></li>
+</ul>
+</section>
+<aside>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#koa-router>koa-router</a></li>
+<li><a href=#koa-body>koa-body</a></li>
+<li><a href=#koacors>@koa/cors</a></li>
+<li><a href=#koa-session>koa-session</a></li>
+<li><a href=#koa-logger>koa-logger</a></li>
+<li><a href=#koa-compress>koa-compress</a></li>
+<li><a href=#koa-static>koa-static</a></li>
+<li><a href=#koa-csrf>koa-csrf</a></li>
+<li><a href=#koa-jwt>koa-jwt</a></li>
+<li><a href=#jsonwebtoken>jsonwebtoken</a></li>
+<li><a href=#koa-helmet>koa-helmet</a></li>
+<li><a href=#mongoose>mongoose</a></li>
+</ul>
+</nav>
+</aside>
+Prev: <a href=/posts/2019/05/koa-learn-note/>Page(/posts/2019/05/koa-learn-note.md)</a>
+Next: <a href=/posts/2019/05/mac-cheat-sheet/>Page(/posts/2019/05/mac-cheat-sheet.md)</a>
+<section class=comments>
+<h3>Comments</h3>
+</section>
+</article>
+</main><footer>
+<small>Copyright 2021 .</small>
+<p>
+Powered by <br>
+<a href=https://gohugo.io>
+<img src=/images/hugo-logo-wide.svg width=128 height=38 alt>
+</a>
+</p>
+</footer>
+</div>
+</body>
+</html>

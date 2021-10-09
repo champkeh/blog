@@ -1,0 +1,238 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Deno安装脚本的解读 - champ的个人博客</title>
+<meta name=author content>
+<meta name=description content>
+<meta name=keywords content>
+<link rel=stylesheet href=/css/style.min.b908753a478f761f9a0df0ec665700540a93ad739231fe7fec77c93add17da8e.css>
+<link rel=stylesheet href=/css/syntax.min.css>
+</head>
+<body>
+<div class=container><header>
+<h1>champ的个人博客</h1>
+</header>
+<nav>
+<a href=/>Home</a>
+<a href=/posts>Blog</a>
+<a href=/demos>Demos</a>
+</nav>
+<main>
+<article class=post>
+<header>
+<h2>Deno安装脚本的解读</h2>
+<p>By </p>
+<p>
+Posted May 22, 2019
+<span class=tags>
+in
+<a href=/tags/shell class=tag>shell</a>
+<a href=/tags/deno class=tag>deno</a>
+</span>
+</p>
+<p>Reading time: 4 minutes.</p>
+</header>
+<section class=body>
+<p><a href=https://github.com/denoland/deno_install/blob/master/install.sh target=_blank rel=noopener>install.sh源码</a>
+</p>
+<p><code>deno</code>的完整安装脚本如下:</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">62
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">63
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">64
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">65
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">66
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">67
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">68
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">69
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">70
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">71
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">72
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#007020>#!/bin/sh
+</span><span style=color:#007020></span>
+<span style=color:#60a0b0;font-style:italic># 当命令的返回值为非零状态时，则立即退出脚本的执行</span>
+<span style=color:#007020>set</span> -e
+
+<span style=color:#60a0b0;font-style:italic># 定义变量os</span>
+<span style=color:#007020;font-weight:700>case</span> <span style=color:#007020;font-weight:700>$(</span>uname -s<span style=color:#007020;font-weight:700>)</span> in
+Darwin<span style=color:#666>)</span> <span style=color:#bb60d5>os</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;osx&#34;</span> ;;
+*<span style=color:#666>)</span> <span style=color:#bb60d5>os</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;linux&#34;</span> ;;
+<span style=color:#007020;font-weight:700>esac</span>
+
+<span style=color:#60a0b0;font-style:italic># 定义变量arch</span>
+<span style=color:#007020;font-weight:700>case</span> <span style=color:#007020;font-weight:700>$(</span>uname -m<span style=color:#007020;font-weight:700>)</span> in
+x86_64<span style=color:#666>)</span> <span style=color:#bb60d5>arch</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;x86_64&#34;</span> ;;
+*<span style=color:#666>)</span> <span style=color:#bb60d5>arch</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;other&#34;</span> ;;
+<span style=color:#007020;font-weight:700>esac</span>
+
+<span style=color:#60a0b0;font-style:italic># 如果上面得到的 arch 变量不是 x86_64，则退出安装</span>
+<span style=color:#007020;font-weight:700>if</span> <span style=color:#666>[</span> <span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$arch</span><span style=color:#4070a0>&#34;</span> <span style=color:#666>=</span> <span style=color:#4070a0>&#34;other&#34;</span> <span style=color:#666>]</span>; <span style=color:#007020;font-weight:700>then</span>
+    <span style=color:#007020>echo</span> <span style=color:#4070a0>&#34;Unsupported architecture </span><span style=color:#007020;font-weight:700>$(</span>uname -m<span style=color:#007020;font-weight:700>)</span><span style=color:#4070a0>. Only x64 binaries are available.&#34;</span>
+    <span style=color:#007020>exit</span>
+<span style=color:#007020;font-weight:700>fi</span>
+
+<span style=color:#60a0b0;font-style:italic># $# 的意思是，传递给该脚本的参数个数</span>
+<span style=color:#60a0b0;font-style:italic># 可以通过 $1 $2 ... 按照位置拿到这些参数</span>
+<span style=color:#60a0b0;font-style:italic># 下面这块代码的目的，是拿到要下载的安装包地址</span>
+<span style=color:#007020;font-weight:700>if</span> <span style=color:#666>[</span><span style=color:#bb60d5>$#</span> -eq <span style=color:#40a070>0</span> <span style=color:#666>]</span>; <span style=color:#007020;font-weight:700>then</span>
+    <span style=color:#60a0b0;font-style:italic># 按照readme的安装说明，无参代表安装最新版</span>
+    <span style=color:#60a0b0;font-style:italic># 注意下面管道符的使用，用来流式处理命令的结果</span>
+    <span style=color:#bb60d5>deno_asset_path</span><span style=color:#666>=</span><span style=color:#007020;font-weight:700>$(</span>curl -sSf https://github.com/denoland/deno/releases |
+        grep -o <span style=color:#4070a0>&#34;/denoland/deno/releases/download/.*/deno_</span><span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>os</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#4070a0>_x64\\.gz&#34;</span> |
+        head -n 1<span style=color:#007020;font-weight:700>)</span>
+    <span style=color:#007020;font-weight:700>if</span> <span style=color:#666>[</span> ! <span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$deno_asset_path</span><span style=color:#4070a0>&#34;</span> <span style=color:#666>]</span>; <span style=color:#007020;font-weight:700>then</span> <span style=color:#007020>exit</span> 1; <span style=color:#007020;font-weight:700>fi</span>
+    <span style=color:#bb60d5>deno_uri</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;https://github.com</span><span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>deno_asset_path</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#4070a0>&#34;</span>
+<span style=color:#007020;font-weight:700>else</span>
+    <span style=color:#60a0b0;font-style:italic># 安装指定版本，版本号通过参数 $1 获取</span>
+    <span style=color:#bb60d5>deno_uri</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;https://github.com/denoland/deno/releases/download/</span><span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>1</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#4070a0>/deno_</span><span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>os</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#4070a0>_x64.gz&#34;</span>
+<span style=color:#007020;font-weight:700>fi</span>
+
+<span style=color:#60a0b0;font-style:italic># 定义deno二进制文件的安装路径和可执行文件路径</span>
+<span style=color:#60a0b0;font-style:italic># 根据 issue#40,这个路径在将来可能会发生变化</span>
+<span style=color:#60a0b0;font-style:italic># https://github.com/denoland/deno_install/issues/40</span>
+<span style=color:#bb60d5>bin_dir</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$HOME</span><span style=color:#4070a0>/.deno/bin&#34;</span>
+<span style=color:#bb60d5>exe</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$bin_dir</span><span style=color:#4070a0>/deno&#34;</span>
+
+<span style=color:#60a0b0;font-style:italic># 如果目录还不存在，则创建</span>
+<span style=color:#007020;font-weight:700>if</span> <span style=color:#666>[</span> ! -d <span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$bin_dir</span><span style=color:#4070a0>&#34;</span> <span style=color:#666>]</span>; <span style=color:#007020;font-weight:700>then</span>
+    mkdir -p <span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$bin_dir</span><span style=color:#4070a0>&#34;</span>
+<span style=color:#007020;font-weight:700>fi</span>
+
+<span style=color:#60a0b0;font-style:italic># 下载安装包</span>
+<span style=color:#60a0b0;font-style:italic># curl 的 -o 选项表示写入上面定义的文件路径中</span>
+<span style=color:#60a0b0;font-style:italic># curl 的 -# 选项表示显示进度</span>
+curl -fL# -o <span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$exe</span><span style=color:#4070a0>.gz&#34;</span> <span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$deno_uri</span><span style=color:#4070a0>&#34;</span>
+
+<span style=color:#60a0b0;font-style:italic># 下载完二进制文件之后，进行解压</span>
+gunzip -df <span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$exe</span><span style=color:#4070a0>.gz&#34;</span>
+
+<span style=color:#60a0b0;font-style:italic># 添加执行权限</span>
+chmod +x <span style=color:#4070a0>&#34;</span><span style=color:#bb60d5>$exe</span><span style=color:#4070a0>&#34;</span>
+
+<span style=color:#007020>echo</span> <span style=color:#4070a0>&#34;Deno was installed successfully to </span><span style=color:#bb60d5>$exe</span><span style=color:#4070a0>&#34;</span>
+
+<span style=color:#60a0b0;font-style:italic># 测试 deno 是否在 PATH 中定义</span>
+<span style=color:#007020;font-weight:700>if</span> <span style=color:#007020>command</span> -v deno &gt;/dev/null; <span style=color:#007020;font-weight:700>then</span>
+    <span style=color:#007020>echo</span> <span style=color:#4070a0>&#34;Run &#39;deno --help&#39; to get started&#34;</span>
+<span style=color:#007020;font-weight:700>else</span>
+    <span style=color:#007020>echo</span> <span style=color:#4070a0>&#34;Manually add the directory to your \$HOME/.bash_profile (or similar)&#34;</span>
+    <span style=color:#007020>echo</span> <span style=color:#4070a0>&#34;  export PATH=\&#34;</span><span style=color:#bb60d5>$bin_dir</span><span style=color:#4070a0>:\$PATH\&#34;&#34;</span>
+    <span style=color:#007020>echo</span> <span style=color:#4070a0>&#34;Run &#39;</span><span style=color:#bb60d5>$exe</span><span style=color:#4070a0> --help&#39; to get started&#34;</span>
+<span style=color:#007020;font-weight:700>fi</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>关于<code>set -e</code>的作用，参考<a href=https://blog.csdn.net/fc34235/article/details/76598448 target=_blank rel=noopener>shell脚本中set -e选项作用范围</a>
+</p>
+<p>关于<code>command</code>命令的解释，参考<a href=https://blog.csdn.net/fickyou/article/details/72911217 target=_blank rel=noopener>shell command命令</a>
+</p>
+<blockquote>
+<p>注意:
+关于<code>curl</code>命令的<code>-L</code>选项</p>
+</blockquote>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ curl -h
+...
+  -L, --location    Follow redirects
+...
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>该选项可以跟随url的重定向，所以对于github上的资源下载是很重要的
+我自己在调试的时候，为了简单，没有使用该选项，所以导致下载了错误的文件</p>
+</blockquote>
+</section>
+<section class=related>
+</section>
+<aside>
+<nav id=TableOfContents></nav>
+</aside>
+Prev: <a href=/posts/2019/05/mongo-learn-note-1/>Page(/posts/2019/05/mongo-learn-note-1.md)</a>
+Next: <a href=/posts/2021/10/blog-build-process/>Page(/posts/2021/10/blog-build-process.md)</a>
+<section class=comments>
+<h3>Comments</h3>
+</section>
+</article>
+</main><footer>
+<small>Copyright 2021 .</small>
+<p>
+Powered by <br>
+<a href=https://gohugo.io>
+<img src=/images/hugo-logo-wide.svg width=128 height=38 alt>
+</a>
+</p>
+</footer>
+</div>
+</body>
+</html>

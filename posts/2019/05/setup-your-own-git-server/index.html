@@ -1,0 +1,77 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>搭建自己的git服务器 - champ的个人博客</title>
+<meta name=author content>
+<meta name=description content>
+<meta name=keywords content>
+<link rel=stylesheet href=/css/style.min.b908753a478f761f9a0df0ec665700540a93ad739231fe7fec77c93add17da8e.css>
+<link rel=stylesheet href=/css/syntax.min.css>
+</head>
+<body>
+<div class=container><header>
+<h1>champ的个人博客</h1>
+</header>
+<nav>
+<a href=/>Home</a>
+<a href=/posts>Blog</a>
+<a href=/demos>Demos</a>
+</nav>
+<main>
+<article class=post>
+<header>
+<h2>搭建自己的git服务器</h2>
+<p>By </p>
+<p>
+Posted May 13, 2019
+<span class=tags>
+in
+<a href=/tags/git%E6%9C%8D%E5%8A%A1%E5%99%A8 class=tag>git服务器</a>
+</span>
+</p>
+<p>Reading time: 1 minutes.</p>
+</header>
+<section class=body>
+<p>环境:
+server: ubuntu 16.4</p>
+<p>第一步，安装git:
+sudo apt-get install git</p>
+<p>第二步，创建一个git用户，用来运行git服务：
+sudo adduser git</p>
+<p>第三步，创建证书登录：
+收集所有需要登录的用户的公钥，导入到 /home/git/.ssh/authorized_keys 文件中，一行一个。</p>
+<p>第四步，初始化git裸仓库：
+cd /srv
+sudo git init &ndash;bare blog.git
+sudo chown -R git:git blog.git</p>
+<p>第五步，禁用shell登录：
+编辑 /etc/passwd 文件，如下：</p>
+<pre tabindex=0><code class=language-passwd data-lang=passwd>git❌1001:1001:,,,:/home/git:/bin/bash
+git❌1001:1001:,,,:/home/git:/user/bin/git-shell
+</code></pre><p>第六步，克隆远程仓库：
+git clone git@server:/srv/blog.git</p>
+<p>第七步，设置本地仓库的origin：
+如果先有本地仓库，后有服务器的裸仓库，可以设置本地仓库的origin:</p>
+</section>
+<section class=related>
+</section>
+<aside>
+<nav id=TableOfContents></nav>
+</aside>
+Next: <a href=/posts/2019/05/nodejs-learn-note/>Page(/posts/2019/05/nodejs-learn-note.md)</a>
+<section class=comments>
+<h3>Comments</h3>
+</section>
+</article>
+</main><footer>
+<small>Copyright 2021 .</small>
+<p>
+Powered by <br>
+<a href=https://gohugo.io>
+<img src=/images/hugo-logo-wide.svg width=128 height=38 alt>
+</a>
+</p>
+</footer>
+</div>
+</body>
+</html>
