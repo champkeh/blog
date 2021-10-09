@@ -5,32 +5,15 @@ title = "champ的个人博客12"
 # preserveTaxonomyNames = true
 # enableRobotsTXT = true
 # enableEmoji = true
-enableGitInfo = true                 # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
+# enableGitInfo = true                 # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
 theme = "basic"
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
-pygmentsOptions = "linenos=table"
-pygmentsCodefences = true
-pygmentsUseClasses = true
-pygmentsCodefencesGuessSyntax = true
+# pygmentsOptions = "linenos=table"
+# pygmentsCodefences = true
+# pygmentsUseClasses = true
+# pygmentsCodefencesGuessSyntax = true
 
-[params]
-  name = 'champ'
-  age = 30
-
-[markup]
-  [markup.highlight]
-    anchorLineNos = false
-    codeFences = true
-    guessSyntax = false
-    hl_Lines = ''
-    lineAnchors = ''
-    lineNoStart = 1
-    lineNos = false
-    lineNumbersInTable = true
-    noClasses = true
-    style = 'monokai'
-    tabWidth = 4
 
 
 hasCJKLanguage = true
@@ -41,36 +24,32 @@ hasCJKLanguage = true
 # copyright = ""             # default: author.name ↓        # 默认为下面配置的author.name ↓
 # uglyURLs = true
 
-[author]
-  name = "champ"
-  age = 30
-  name = "john"
 
 # [sitemap]
 #   changefreq = "weekly"
 #   priority = 0.5
 #   filename = "sitemap.xml"
 
-[[menu.main]]             # config your menu              # 配置目录
-  name = "Home"
-  weight = 10
-  identifier = "home"
-  url = "/"
-[[menu.main]]
-  name = "Archives"
-  weight = 20
-  identifier = "archives"
-  url = "/post/"
-[[menu.main]]
-  name = "Tags"
-  weight = 30
-  identifier = "tags"
-  url = "/tags/"
-[[menu.main]]
-  name = "Categories"
-  weight = 40
-  identifier = "categories"
-  url = "/categories/"
+# [[menu.main]]             # config your menu              # 配置目录
+#   name = "Home"
+#   weight = 10
+#   identifier = "home"
+#   url = "/"
+# [[menu.main]]
+#   name = "Archives"
+#   weight = 20
+#   identifier = "archives"
+#   url = "/post/"
+# [[menu.main]]
+#   name = "Tags"
+#   weight = 30
+#   identifier = "tags"
+#   url = "/tags/"
+# [[menu.main]]
+#   name = "Categories"
+#   weight = 40
+#   identifier = "categories"
+#   url = "/categories/"
 
 # [params]
 #   version = "4.x"           # Used to give a friendly message when you have an incompatible update

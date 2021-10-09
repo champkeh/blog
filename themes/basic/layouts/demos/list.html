@@ -4,10 +4,8 @@
 
 {{ .Content }}
 
-<p>Kind: {{ .Kind }}</p>
-
-<p>.Date {{ .Date }}</p>
-<p>.Lastmod {{ .Lastmod }}</p>
+{{ .Section }}
+{{ .Parent }}
 
 <h3>Pages</h3>
 <ul>
@@ -15,5 +13,10 @@
     <li><a href="{{ .RelPermalink }}">{{ .Title }} ({{ .Kind }})</a></li>
     {{ end }}
 </ul>
+
+<hr>
+
+<h2>Variable</h2>
+{{ .File }}
 
 {{ end }}

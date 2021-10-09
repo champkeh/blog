@@ -1,0 +1,18 @@
+# markdown引擎
+goldmark:
+  parser:
+    attribute:
+      block: true
+      title: true
+
+# 代码块语法高亮
+highlight:
+  anchorLineNos: false
+  codeFences: true
+  hl_Lines: ""
+  lineNoStart: 1
+  lineNos: true
+  lineNumbersInTable: true
+  noClasses: true
+  style: friendly
+  tabWidth: 4

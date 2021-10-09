@@ -1,0 +1,39 @@
+baseURL: https://blog.champ.design/
+languageCode: zh
+
+# 网站标题
+title: champ的个人博客
+
+# 主题选择
+theme: basic
+
+# 启用 Emoji 表情符号，比如 :smile: 会渲染为 😄
+# 常用的表情代码: https://www.webfx.com/tools/emoji-cheat-sheet/
+enableEmoji: true
+
+# 启用 .GitInfo 对象
+# 启用之后，每个 page 都可以访问到 .GitInfo 对象，通常用于修改 Lastmod 参数
+enableGitInfo: true
+
+# 启用内联 shortcodes
+enableInlineShortcodes: true
+
+enableMissingTranslationPlaceholders: true
+
+# 生成 robots.txt 文件
+enableRobotsTXT: true
+
+# Google Analytics tracking ID
+googleAnalytics: ""
+
+# Content 文件里是否包含中日韩文字，用于优化摘要生成和字数统计
+hasCJKLanguage: true
+
+# 分页大小
+paginate: 10
+
+# 分页使用的路径名，比如第2页的路径为: https://example.com/page/2
+paginatePath: "page"
+
+# .Summary 摘要包含的字数
+summaryLength: 70

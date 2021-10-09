@@ -1,0 +1,2 @@
+# 生成构建分析数据，主要用于清除无用的CSS
+writeStats: true

@@ -4,8 +4,10 @@
 
 {{ .Content }}
 
+<hr>
 
-<p>.Date {{ .Date }}</p>
-<p>.Lastmod {{ .Lastmod }}</p>
+<h2>Variable</h2>
+
+{{ .Site.Params.COPyrighthtml | safeHTML }}
 
 {{ end }}

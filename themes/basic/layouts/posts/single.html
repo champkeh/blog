@@ -35,6 +35,14 @@
         {{ .TableOfContents }}
     </aside>
 
+    {{ with .Prev }}
+    Prev: <a href="{{ .RelPermalink }}">{{.}}</a>
+    {{ end }}
+
+    {{ with .Next }}
+    Next: <a href="{{ .RelPermalink }}">{{.}}</a>
+    {{ end }}
+
     <section class="comments">
         <h3>Comments</h3>
         {{ template "_internal/disqus.html" . }}
