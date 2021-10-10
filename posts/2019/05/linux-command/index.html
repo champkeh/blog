@@ -5,7 +5,7 @@
 <meta name=author content>
 <meta name=description content>
 <meta name=keywords content>
-<link rel=stylesheet href=/css/style.min.cdb10b3ca2d100c68bd4cad3fafae51401acb80d2af3e43f5f3c56281d65a2cf.css>
+<link rel=stylesheet href=/css/style.min.26861c21ac32379fb8e5f608829f044a996d611fdba1349db869cb08c486c5e2.css>
 <link rel=stylesheet href=/css/syntax.min.css>
 </head>
 <body>
@@ -22,7 +22,7 @@
 <article class=post-single>
 <header>
 <h1>Linux常用命令</h1>
-<span class=summary>清空文件内容 1 2 3 4 5 6 7 $ > filename #这个命令执行完之后，不会自动退出，需要按Ctrl+D结束 $ : > filename #我最常用的，:是一个占位符，不产生任何输</span>
+<span class=summary>清空文件内容 ¶ 1 2 3 4 5 6 7 $ > filename #这个命令执行完之后，不会自动退出，需要按Ctrl+D结束 $ : > filename #我最常用的，:是一个占位符，不产生任何</span>
 <div class=meta>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
 编辑于 2019 年 05 月 09 日
@@ -43,7 +43,7 @@ CC-BY-SA-4.0
 </nav>
 </aside>
 <section class=body>
-<h2 id=清空文件内容>清空文件内容</h2>
+<h2 id=清空文件内容>清空文件内容 <a href=#%e6%b8%85%e7%a9%ba%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9 class=anchor>¶</a></h2>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
@@ -71,9 +71,12 @@ $ cp /dev/null filename
 <li><code>: > filename</code>是上面的改进版，不需要手动执行<code>Ctrl+D</code></li>
 </ol>
 </blockquote>
-<h2 id=按照时间删除文件>按照时间删除文件</h2>
+<h2 id=按照时间删除文件>按照时间删除文件 <a href=#%e6%8c%89%e7%85%a7%e6%97%b6%e9%97%b4%e5%88%a0%e9%99%a4%e6%96%87%e4%bb%b6 class=anchor>¶</a></h2>
 <p>有时候，我会不小心把整个目录下的所有文件上传到服务器上的一个错误的目录下，然后想删除刚上传的文件。但是登录到服务器之后，发现这个目录下不仅仅是刚上传的文件，还有之前就存在的一些文件。而我又不能把这个目录下的所有文件都删除掉，我只想删除刚刚上传的那些文件，也就是说，我只想删除刚刚修改的文件。截图如下:</p>
-<p><img src=/images/linux-command-img1.png alt></p>
+<p><p class=md__image>
+<img src=/images/linux-command-img1.png alt>
+</p>
+</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
@@ -84,7 +87,7 @@ $ cp /dev/null filename
 find . -mtime -10 -exec rm -Rf <span style=color:#666>{}</span> <span style=color:#4070a0;font-weight:700>\;</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id=rsync-使用自定义-ssh-key-进行发布>rsync 使用自定义 ssh key 进行发布</h2>
+</div><h2 id=rsync-使用自定义-ssh-key-进行发布>rsync 使用自定义 ssh key 进行发布 <a href=#rsync-%e4%bd%bf%e7%94%a8%e8%87%aa%e5%ae%9a%e4%b9%89-ssh-key-%e8%bf%9b%e8%a1%8c%e5%8f%91%e5%b8%83 class=anchor>¶</a></h2>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
