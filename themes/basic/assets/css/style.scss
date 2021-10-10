@@ -54,10 +54,10 @@ button, input {
 
 #header {
   padding-top: 4.25rem;
+  position: sticky;
+  top: -4.25rem;
 
   .wrapper {
-    position: sticky;
-    top: 0;
     display: flex;
     justify-content: space-between;
     color: var(--font-secondary);
