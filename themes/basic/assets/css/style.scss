@@ -281,7 +281,13 @@ button, input {
       .highlight {
         margin: 1.5rem 0;
         max-width: 150%;
-        width: fit-content;
+        &:hover {
+          width: fit-content;
+        }
+        table::-webkit-scrollbar {
+          width: 0 !important;
+          height: 0 !important;
+        }
       }
     }
   }
