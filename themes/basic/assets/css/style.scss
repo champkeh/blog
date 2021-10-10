@@ -284,9 +284,14 @@ button, input {
         &:hover {
           width: fit-content;
         }
-        table::-webkit-scrollbar {
-          width: 0 !important;
-          height: 0 !important;
+
+        table {
+          -ms-overflow-style: none;
+          overflow: -moz-scrollbars-none;
+          &::-webkit-scrollbar {
+            width: 0 !important;
+            height: 0 !important;
+          }
         }
       }
     }
