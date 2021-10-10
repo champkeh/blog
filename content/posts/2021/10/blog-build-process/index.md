@@ -50,38 +50,33 @@ on:
 
 jobs:
   build-and-deploy:
-    
+
     runs-on: ubuntu-latest
 
     steps:
 
       # Step 1 - Checks-out your repository under $GITHUB_WORKSPACE
-      - name: Checkout
+      - name: Checkout 🛎️
         uses: actions/checkout@v2
-        with:
-          submodules: true  # Fetch Hugo themes
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       # Step 2 - Sets up the latest version of Hugo
-      - name: Setup Hugo
+      - name: Setup Hugo 🔧
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
+          extended: true
 
-      # Step 3 - Clean and don't fail
-      - name: Clean public directory
-        run: rm -rf public
+      # Step 3 - Install Dependencies and Build site
+      - name: Install and Build 🔧
+        run: |
+          yarn
+          yarn build
 
-      # Step 4 - Builds the site using the latest version of Hugo
-      # Also specifies the theme we want to use
-      - name: Build
-        run: hugo --theme=basic
-
-      # Step 5 - Create name file
+      # Step 4 - Create name file
       - name: Create cname file
         run: echo 'blog.champ.design' > public/CNAME
 
-      # Step 6 - Push our generated site to our gh-pages branch
+      # Step 5 - Push our generated site to our gh-pages branch
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
