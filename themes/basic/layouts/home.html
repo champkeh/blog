@@ -1,5 +1,13 @@
 {{ define "main" }}
 
+    {{ with site.GetPage "about.md" }}
+        <section class="about">
+            {{ .Content }}
+
+            <p class="footnote">———— ABOUT.md</p>
+        </section>
+    {{ end }}
+
     {{ range (where .Site.RegularPages "Type" "in" "posts").ByDate.Reverse }}
 
         <section class="post">
