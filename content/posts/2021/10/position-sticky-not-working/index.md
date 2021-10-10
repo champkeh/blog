@@ -110,3 +110,8 @@ autoCollapseToc: false
 ## 总结
 
 要想实现元素吸顶效果，必须设置滚动容器内的直接子元素为`sticky`定位，不能是**后代**子元素。
+
+
+## 参考
+
+- https://www.designcise.com/web/tutorial/how-to-fix-issues-with-css-position-sticky-not-working#checking-if-a-parent-element-is-a-flexbox
