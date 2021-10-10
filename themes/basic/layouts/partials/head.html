@@ -23,10 +23,16 @@
     {{ .Site.Params.keywords }}
 {{- end -}}
 ">
+    <!--加载css文件-->
     {{ $css := resources.Get "css/style.scss" | toCSS | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-    {{ $css := resources.Get "css/syntax.css" | minify }}
+    {{ $css := resources.Get "js/app.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+    <!--加载js文件-->
+    {{ $js := resources.Get "js/app.js" | minify | fingerprint }}
+    <script src="{{$js.RelPermalink}}"></script>
+
     {{ template "_internal/google_analytics_async.html" . }}
 
     {{ range .AlternativeOutputFormats -}}

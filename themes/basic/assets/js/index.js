@@ -2,6 +2,8 @@
 
 import axios from 'axios'
 import lunr from 'lunr'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import '@fortawesome/fontawesome-free/js/all.min'
 
 window.SearchApp = {
     searchField: document.getElementById('searchField'),

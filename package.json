@@ -1,0 +1,36 @@
+{
+  "name": "champ.design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "[个人博客](https://blog.champ.design)",
+  "main": "index.js",
+  "scripts": {
+    "build:code": "rollup -c",
+    "build:site": "hugo --cleanDestinationDir --minify",
+    "build": "yarn build:code && yarn build:site",
+    "dev": "hugo server --disableFastRender"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/champkeh/blog.git"
+  },
+  "keywords": [],
+  "author": "champkeh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/champkeh/blog/issues"
+  },
+  "homepage": "https://github.com/champkeh/blog#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "axios": "^0.22.0",
+    "lunr": "^2.3.9"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "postcss": "^8.3.9",
+    "rollup": "^2.58.0",
+    "rollup-plugin-postcss": "^4.0.1"
+  }
+}
