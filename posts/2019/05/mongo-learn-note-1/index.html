@@ -2,11 +2,12 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>MongoDB 学习笔记之CRUD - champ的个人博客</title>
-<meta name=author content>
-<meta name=description content>
-<meta name=keywords content>
+<meta name=author content="champ">
+<meta name=description content="champ的个人网站，分享一些自己在开发过程中的小知识已经一些小工具">
+<meta name=keywords content="开发笔记，小工具">
 <link rel=stylesheet href=/css/style.min.26861c21ac32379fb8e5f608829f044a996d611fdba1349db869cb08c486c5e2.css>
-<link rel=stylesheet href=/css/syntax.min.css>
+<link rel=stylesheet href=/js/app.min.32095c9383089bb169dd0ad8552d0d7044206daf16c5f53c90395500fe9cbc1f.css>
+<script src=/js/app.min.1efa461e923265a55116bf3d81e23f569c18279542d6261f87075f4e8c0eddb6.js></script>
 </head>
 <body>
 <div id=container class=container>
@@ -24,10 +25,12 @@
 <h1>MongoDB 学习笔记之CRUD</h1>
 <span class=summary>启动一个 MongoDB 服务器容器 ¶ 1 2 $ docker pull mongo:4 $ docker run --name mymongo -v /data/docker-db:/data/db -d mongo:4 启动 Mongo Express 容器 ¶ 1 2 $ docker pull mongo-express $ docker run --link mymongo:mongo -p 8081:8081 -d mongo-express 在浏览器打开 http://localhost</span>
 <div class=meta>
-<time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
+<time>
+<i class="far fa-calendar"></i>
 编辑于 2019 年 05 月 11 日
 </time>
-<a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh target=_blank rel="noopener noreferrer"><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="版权图标" height="1.125em" width="1.125em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2c5.52.0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 2c-4.42.0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 3c1.82.0 3.413.973 4.288 2.428l-1.714 1.029A3 3 0 1012 15a2.998 2.998.0 002.573-1.456l1.715 1.028A4.999 4.999.0 017 12c0-2.76 2.24-5 5-5z"/></g></svg>
+<a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh target=_blank rel="noopener noreferrer">
+<i class="far fa-copyright"></i>
 CC-BY-SA-4.0
 </a>
 </div>
@@ -6637,6 +6640,14 @@ accounts
 </div>
 </section>
 <section class=related>
+<h3>Related</h3>
+<ul>
+<li><a href=/posts/2019/05/mac-cheat-sheet/>Mac 实用技巧</a></li>
+<li><a href=/posts/2019/05/koa-scaffold/>Koa 项目脚手架</a></li>
+<li><a href=/posts/2019/05/koa-learn-note/>Koa 学习笔记</a></li>
+<li><a href=/posts/2019/05/linux-command/>Linux常用命令</a></li>
+<li><a href=/posts/2019/05/nodejs-learn-note/>Nodejs之nextTick vs setImmediate</a></li>
+</ul>
 </section>
 <div class=bottom-nav>
 <a href=/posts/2019/05/mac-cheat-sheet/>&lt; Mac 实用技巧</a>
