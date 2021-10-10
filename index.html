@@ -6,12 +6,13 @@
 <meta name=author content>
 <meta name=description content>
 <meta name=keywords content>
-<link rel=stylesheet href=/css/style.min.707a447a38b5c899ab7181e46ad6f92898db92b84fe60b93b445fe2cbd02c29d.css>
+<link rel=stylesheet href=/css/style.min.5c11f038b4e260f640db314c292401547f46a29292254b93638b363b69a47e2f.css>
 <link rel=stylesheet href=/css/syntax.min.css>
 <link rel=alternate type=application/rss+xml href=https://blog.champ.design/index.xml title=champ的个人博客>
 </head>
 <body>
-<div id=container class=container><header id=header>
+<div id=container class=container>
+<header id=header>
 <div class=wrapper>
 <form><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="搜索图标" class="icon icon-search" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96.0 0111 20c-4.968.0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96.0 01-1.969 5.617zm-2.006-.742A6.977 6.977.0 0018 11c0-3.868-3.133-7-7-7-3.868.0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977.0 004.875-1.975l.15-.15z"/></g></svg>
 <input type=search placeholder="在「网站」中搜搜 ..." title="使用 / 键聚焦搜索框">
@@ -20,9 +21,9 @@
 </header>
 <main id=main>
 <section class=post>
-<h2><a href=/posts/2021/10/blog-build-process/>博客搭建过程</a></h2>
-<span class=summary>采用的框架 博客采用hugo静态站点生成器，主题目前使用的是jane，不过个人觉得并不是很符合我的口味，有时间还是需要魔改一下。 关于自动发布到</span>
-<div class=footer>
+<h2><a href=/posts/2021/10/blog-build-process/>网站搭建过程</a></h2>
+<span class=summary>记录这个网站的搭建过程及使用的一些技术。</span>
+<div class=meta>
 <a href=/posts/2021/10/blog-build-process/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -33,7 +34,7 @@
 <section class=post>
 <h2><a href=/posts/2021/goal/>2021年目标</a></h2>
 <span class=summary>2021年要达到的目标如下： 把blog和tools这两个项目搭建起来，配置自动发布，后续来了兴致也不至于没有地方写代码。 阅读《深入理解计算机</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2021/goal/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -44,7 +45,7 @@
 <section class=post>
 <h2><a href=/posts/2019/05/deno_install_explain/>Deno安装脚本的解读</a></h2>
 <span class=summary>install.sh源码 deno的完整安装脚本如下: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2019/05/deno_install_explain/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -55,7 +56,7 @@
 <section class=post>
 <h2><a href=/posts/2019/05/mongo-learn-note-1/>MongoDB 学习笔记之CRUD</a></h2>
 <span class=summary>启动一个 MongoDB 服务器容器 1 2 $ docker pull mongo:4 $ docker run --name mymongo -v /data/docker-db:/data/db -d mongo:4 启动 Mongo Express 容器 1 2 $ docker pull mongo-express $ docker run --link mymongo:mongo -p 8081:8081 -d mongo-express 在浏览器打开 http://localhost:8</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2019/05/mongo-learn-note-1/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -66,7 +67,7 @@
 <section class=post>
 <h2><a href=/posts/2019/05/mac-cheat-sheet/>Mac 实用技巧</a></h2>
 <span class=summary>微调音量 Shift + Option + 音量键 可以以 1/4 倍调整音量，实现更精细的控制音量 删除键 1 2 3 4 5 单按 delete 删除光标之前的一个字符（默认） 组合 `fn + delete`，删</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2019/05/mac-cheat-sheet/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -77,7 +78,7 @@
 <section class=post>
 <h2><a href=/posts/2019/05/koa-scaffold/>Koa 项目脚手架</a></h2>
 <span class=summary>由于 koa 框架非常精简，不捆绑任何中间件，因此，路由、日志等这些常见的功能都是由单独的模块提供。这里列举一些常用的中间件，可以作为脚手架使用。 koa-router</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2019/05/koa-scaffold/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -88,7 +89,7 @@
 <section class=post>
 <h2><a href=/posts/2019/05/koa-learn-note/>Koa 学习笔记</a></h2>
 <span class=summary>nodemon工具的使用 工具说明: 类似于前端开发，我希望node服务器运行起来之后，当我修改了我的代码之后，服务会自动重启，不需要我每次都手</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2019/05/koa-learn-note/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -99,7 +100,7 @@
 <section class=post>
 <h2><a href=/posts/2019/05/linux-command/>Linux常用命令</a></h2>
 <span class=summary>清空文件内容 1 2 3 4 5 6 7 $ > filename #这个命令执行完之后，不会自动退出，需要按Ctrl+D结束 $ : > filename #我最常用的，:是一个占位符，不产生任何输</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2019/05/linux-command/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -110,7 +111,7 @@
 <section class=post>
 <h2><a href=/posts/2019/05/nodejs-learn-note/>Nodejs之nextTick vs setImmediate</a></h2>
 <span class=summary>关于 process.nextTick 和 setImmediate 执行时机的问题： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 // 加入两个nextTick()的回调函数 process.nextTick(function () { console.log(&#3</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2019/05/nodejs-learn-note/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
@@ -121,7 +122,7 @@
 <section class=post>
 <h2><a href=/posts/2019/05/setup-your-own-git-server/>搭建自己的git服务器</a></h2>
 <span class=summary>环境: server: ubuntu 16.4 第一步，安装git: sudo apt-get install git 第二步，创建一个git用户，用来运行git服务： sudo adduser git 第三步，创建证书登录： 收集所有需要登录的用户的</span>
-<div class=footer>
+<div class=meta>
 <a href=/posts/2019/05/setup-your-own-git-server/>
 <svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M13 21v2h-2v-2H3a1 1 0 01-1-1V4a1 1 0 011-1h6a3.99 3.99.0 013 1.354A3.99 3.99.0 0115 3h6a1 1 0 011 1v16a1 1 0 01-1 1h-8zm7-2V5h-5a2 2 0 00-2 2v12h7zm-9 0V7A2 2 0 009 5H4v14h7z"/></g></svg>查看全文</a>
 <time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>

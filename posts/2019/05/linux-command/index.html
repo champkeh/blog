@@ -5,32 +5,43 @@
 <meta name=author content>
 <meta name=description content>
 <meta name=keywords content>
-<link rel=stylesheet href=/css/style.min.707a447a38b5c899ab7181e46ad6f92898db92b84fe60b93b445fe2cbd02c29d.css>
+<link rel=stylesheet href=/css/style.min.5c11f038b4e260f640db314c292401547f46a29292254b93638b363b69a47e2f.css>
 <link rel=stylesheet href=/css/syntax.min.css>
 </head>
 <body>
-<div id=container class=container><header id=header>
+<div id=container class=container>
+<header id=header>
 <div class=wrapper>
-<form><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="搜索图标" class="icon icon-search" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96.0 0111 20c-4.968.0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96.0 01-1.969 5.617zm-2.006-.742A6.977 6.977.0 0018 11c0-3.868-3.133-7-7-7-3.868.0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977.0 004.875-1.975l.15-.15z"/></g></svg>
-<input type=search placeholder="在「网站」中搜搜 ..." title="使用 / 键聚焦搜索框">
-</form>
+<button class=round-left onclick="location.href='/'"><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="主页图标" class="css-ggaxow ellz05y0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M19 21H5a1 1 0 01-1-1v-9H1l10.327-9.388a1 1 0 011.346.0L23 11h-3v9a1 1 0 01-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></g></svg>
+回到主页</button>
+<button class=round-right><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="文章目录" class="css-ggaxow ellz05y0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M20 22H4a1 1 0 01-1-1V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></g></svg>
+目录</button>
 </div>
 </header>
 <main id=main>
-<article class=post>
+<article class=post-single>
 <header>
-<h2>Linux常用命令</h2>
-<p>By </p>
-<p>
-Posted May 15, 2019
-<span class=tags>
-in
-<a href=/tags/linux class=tag>linux</a>
-<a href=/tags/command class=tag>command</a>
-</span>
-</p>
-<p>Reading time: 2 minutes.</p>
+<h1>Linux常用命令</h1>
+<span class=summary>清空文件内容 1 2 3 4 5 6 7 $ > filename #这个命令执行完之后，不会自动退出，需要按Ctrl+D结束 $ : > filename #我最常用的，:是一个占位符，不产生任何输</span>
+<div class=meta>
+<time><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"/></g></svg>
+编辑于 2019 年 05 月 09 日
+</time>
+<a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh target=_blank rel="noopener noreferrer"><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="版权图标" height="1.125em" width="1.125em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2c5.52.0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 2c-4.42.0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 3c1.82.0 3.413.973 4.288 2.428l-1.714 1.029A3 3 0 1012 15a2.998 2.998.0 002.573-1.456l1.715 1.028A4.999 4.999.0 017 12c0-2.76 2.24-5 5-5z"/></g></svg>
+CC-BY-SA-4.0
+</a>
+</div>
 </header>
+<aside>
+<h2>Table of Contents</h2>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#清空文件内容>清空文件内容</a></li>
+<li><a href=#按照时间删除文件>按照时间删除文件</a></li>
+<li><a href=#rsync-使用自定义-ssh-key-进行发布>rsync 使用自定义 ssh key 进行发布</a></li>
+</ul>
+</nav>
+</aside>
 <section class=body>
 <h2 id=清空文件内容>清空文件内容</h2>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
@@ -86,15 +97,6 @@ find . -mtime -10 -exec rm -Rf <span style=color:#666>{}</span> <span style=colo
 </section>
 <section class=related>
 </section>
-<aside>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#清空文件内容>清空文件内容</a></li>
-<li><a href=#按照时间删除文件>按照时间删除文件</a></li>
-<li><a href=#rsync-使用自定义-ssh-key-进行发布>rsync 使用自定义 ssh key 进行发布</a></li>
-</ul>
-</nav>
-</aside>
 Prev: <a href=/posts/2019/05/nodejs-learn-note/>Page(/posts/2019/05/nodejs-learn-note.md)</a>
 Next: <a href=/posts/2019/05/koa-learn-note/>Page(/posts/2019/05/koa-learn-note.md)</a>
 <section class=comments>
