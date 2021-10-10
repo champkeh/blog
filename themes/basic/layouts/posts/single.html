@@ -44,13 +44,15 @@
     </section>
 
     <!--底部导航-->
-    {{ with .Prev }}
-    Prev: <a href="{{ .RelPermalink }}">{{.}}</a>
-    {{ end }}
+    <div class="bottom-nav">
+        {{ with .Prev }}
+        <a href="{{ .RelPermalink }}">&lt; {{ .Title }}</a>
+        {{ end }}
 
-    {{ with .Next }}
-    Next: <a href="{{ .RelPermalink }}">{{.}}</a>
-    {{ end }}
+        {{ with .Next }}
+        <a href="{{ .RelPermalink }}">{{ .Title }} &gt;</a>
+        {{ end }}
+    </div>
 
     <!--评论-->
     <section class="comments">

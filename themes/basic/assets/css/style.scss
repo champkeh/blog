@@ -221,6 +221,8 @@ button, input {
   }
 
   .post-single {
+    padding-bottom: 5rem;
+
     header {
       padding: 2.5rem 1rem;
       border-bottom: var(--border);
@@ -265,7 +267,7 @@ button, input {
       }
 
       h2 {
-        padding: 4rem 0 0.5rem;
+        padding: 2rem 0 0.5rem;
         font-size: 1.375rem;
         line-height: 2;
       }
@@ -276,10 +278,11 @@ button, input {
 
       img {
         width: 100%;
+        border: var(--border);
       }
 
       .highlight {
-        margin: 1.5rem 0;
+        margin: 1rem 0;
         max-width: 150%;
         &:hover {
           width: fit-content;
@@ -294,6 +297,37 @@ button, input {
           }
         }
       }
+    }
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        margin-right: 1.375rem;
+        text-decoration: none;
+        color: var(--font-link);
+        line-height: 2.25;
+
+        svg {
+          width: 1.125rem;
+          height: 1.125rem;
+          margin-right: 0.75rem;
+        }
+      }
+      a:hover {
+        color: var(--font-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+      }
+    }
+
+    section.comments {
+      padding-top: 3rem;
     }
   }
 }
