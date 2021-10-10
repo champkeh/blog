@@ -18,7 +18,7 @@
     </header>
 
     <!--目录-->
-    {{ if gt (.TableOfContents | string | len) 32 }}
+    {{ if and (ne .Params.toc false) (gt (.TableOfContents | string | len) 32) }}
         <aside>
             <h2>Table of Contents</h2>
             {{ .TableOfContents }}

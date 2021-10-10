@@ -1,8 +1,17 @@
 ---
-title: "{{ replace .Name '-' ' ' | title }}"
+title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
+lastmod: {{ .Date }}
+draft: true
+keywords: []
 description: ""
-draft: false
-tags:
+summary: ""
+tags: []
+categories: []
+
+comment: false
+toc: false
+autoCollapseToc: false
 ---
+
 

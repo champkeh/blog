@@ -8,7 +8,7 @@
     "build:code": "rollup -c",
     "build:site": "hugo --cleanDestinationDir --minify",
     "build": "yarn build:code && yarn build:site",
-    "dev": "hugo server --disableFastRender"
+    "dev": "yarn build:code && hugo server --disableFastRender -D"
   },
   "repository": {
     "type": "git",
