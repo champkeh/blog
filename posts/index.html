@@ -25,6 +25,18 @@
 <article>
 <header>
 <h3>
+<a href=/posts/2021/10/position-sticky-not-working/>Sticky 定位无效的一些坑</a>
+</h3>
+<time>
+October
+10
+</time>
+</header>
+<code>position: sticky</code>是<code>css</code>中比较常见的吸顶定位方式，但使用不当很可能会导致该定位方式无效。本文记录自己在sticky定位中踩过的一些坑。
+</article>
+<article>
+<header>
+<h3>
 <a href=/posts/2021/goal/>2021年目标</a>
 </h3>
 <time>
@@ -130,18 +142,26 @@ May
 </header>
 关于 process.nextTick 和 setImmediate 执行时机的问题： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 // 加入两个nextTick()的回调函数 process.nextTick(function () { console.log(&#3
 </article>
-<article>
-<header>
-<h3>
-<a href=/posts/2019/05/setup-your-own-git-server/>搭建自己的git服务器</a>
-</h3>
-<time>
-May
-13
-</time>
-</header>
-环境: server: ubuntu 16.4 第一步，安装git: sudo apt-get install git 第二步，创建一个git用户，用来运行git服务： sudo adduser git 第三步，创建证书登录： 收集所有需要登录的用户的
-</article>
+<ul class="pagination pagination-default">
+<li class="page-item disabled">
+<a href=# aria-disabled=true aria-label=First class=page-link role=button tabindex=-1><span aria-hidden=true>&#171;&#171;</span></a>
+</li>
+<li class="page-item disabled">
+<a href=# aria-disabled=true aria-label=Previous class=page-link role=button tabindex=-1><span aria-hidden=true>&#171;</span></a>
+</li>
+<li class="page-item active">
+<a href=# aria-current=page aria-label="Page 1" class=page-link role=button>1</a>
+</li>
+<li class=page-item>
+<a href=/posts/page/2/ aria-label="Page 2" class=page-link role=button>2</a>
+</li>
+<li class=page-item>
+<a href=/posts/page/2/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a>
+</li>
+<li class=page-item>
+<a href=/posts/page/2/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a>
+</li>
+</ul>
 </main>
 </div>
 </body>

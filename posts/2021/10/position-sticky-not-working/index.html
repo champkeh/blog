@@ -1,0 +1,209 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Sticky 定位无效的一些坑 - champ的个人博客</title>
+<meta name=author content="champ">
+<meta name=description content="记录sticky定位不生效的一些坑">
+<meta name=keywords content="开发笔记，小工具">
+<link rel=stylesheet href=/css/style.min.26861c21ac32379fb8e5f608829f044a996d611fdba1349db869cb08c486c5e2.css>
+<link rel=stylesheet href=/js/app.min.32095c9383089bb169dd0ad8552d0d7044206daf16c5f53c90395500fe9cbc1f.css>
+<script src=/js/app.min.1efa461e923265a55116bf3d81e23f569c18279542d6261f87075f4e8c0eddb6.js></script>
+</head>
+<body>
+<div id=container class=container>
+<header id=header>
+<div class=wrapper>
+<button class=round-left onclick="location.href='/'"><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="主页图标" class="css-ggaxow ellz05y0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M19 21H5a1 1 0 01-1-1v-9H1l10.327-9.388a1 1 0 011.346.0L23 11h-3v9a1 1 0 01-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></g></svg>
+回到主页</button>
+<button class=round-right><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="文章目录" class="css-ggaxow ellz05y0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M20 22H4a1 1 0 01-1-1V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></g></svg>
+目录</button>
+</div>
+</header>
+<main id=main>
+<article class=post-single>
+<header>
+<h1>Sticky 定位无效的一些坑</h1>
+<span class=summary><code>position: sticky</code>是<code>css</code>中比较常见的吸顶定位方式，但使用不当很可能会导致该定位方式无效。本文记录自己在sticky定位中踩过的一些坑。</span>
+<div class=meta>
+<time>
+<i class="far fa-calendar"></i>
+编辑于 2021 年 10 月 18 日
+</time>
+<a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh target=_blank rel="noopener noreferrer">
+<i class="far fa-copyright"></i>
+CC-BY-SA-4.0
+</a>
+</div>
+</header>
+<aside>
+<h2>Table of Contents</h2>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#场景>场景</a></li>
+<li><a href=#初步实现的代码-无效代码>初步实现的代码 (无效代码😟)</a>
+<ul>
+<li><a href=#html>HTML</a></li>
+<li><a href=#css>CSS</a></li>
+</ul>
+</li>
+<li><a href=#求助-google->求助 Google 😊</a></li>
+<li><a href=#变通办法>变通办法</a></li>
+<li><a href=#总结>总结</a></li>
+</ul>
+</nav>
+</aside>
+<section class=body>
+<h2 id=场景>场景 <a href=#%e5%9c%ba%e6%99%af class=anchor>¶</a></h2>
+<p>在开发这个网站时，我想让顶部的导航栏/搜索栏在滚动时固定在屏幕顶部，这样会更方便用户的操作。期望的效果如下：</p>
+<p><p class=md__image>
+<img src=images/sticky-position-effect.gif alt=sticky定位的效果>
+</p>
+</p>
+<h2 id=初步实现的代码-无效代码>初步实现的代码 (无效代码😟) <a href=#%e5%88%9d%e6%ad%a5%e5%ae%9e%e7%8e%b0%e7%9a%84%e4%bb%a3%e7%a0%81-%e6%97%a0%e6%95%88%e4%bb%a3%e7%a0%81 class=anchor>¶</a></h2>
+<h3 id=html>HTML <a href=#html class=anchor>¶</a></h3>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style=display:block;width:100%;background-color:#d8d8d8><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#062873;font-weight:700>body</span>&gt;
+&lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;container&#34;</span>&gt;
+    &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;header&#34;</span>&gt;
+<span style=display:block;width:100%;background-color:#d8d8d8>        &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;wrapper&#34;</span>&gt;需要定位的元素&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+</span>    &lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+    &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;content&#34;</span>&gt;
+        &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;box&#34;</span>&gt;&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+        &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;box&#34;</span>&gt;&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+        &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;box&#34;</span>&gt;&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+        &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;box&#34;</span>&gt;&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+        &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;box&#34;</span>&gt;&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+        &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;box&#34;</span>&gt;&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+        &lt;<span style=color:#062873;font-weight:700>div</span> <span style=color:#4070a0>class</span><span style=color:#666>=</span><span style=color:#4070a0>&#34;box&#34;</span>&gt;&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+    &lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+&lt;/<span style=color:#062873;font-weight:700>div</span>&gt;
+&lt;/<span style=color:#062873;font-weight:700>body</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=css>CSS <a href=#css class=anchor>¶</a></h3>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style=display:block;width:100%;background-color:#d8d8d8><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span></span><span style=display:block;width:100%;background-color:#d8d8d8><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css>.<span style=color:#0e84b5;font-weight:700>header</span> {
+    <span style=color:#007020;font-weight:700>padding-top</span>: <span style=color:#40a070>200</span><span style=color:#902000>px</span>;
+}
+.<span style=color:#0e84b5;font-weight:700>wrapper</span> {
+    <span style=color:#007020;font-weight:700>height</span>: <span style=color:#40a070>100</span><span style=color:#902000>px</span>;
+    <span style=color:#007020;font-weight:700>background-color</span>: <span style=color:#007020;font-weight:700>red</span>;
+<span style=display:block;width:100%;background-color:#d8d8d8>    <span style=color:#007020;font-weight:700>position</span>: <span style=color:#007020;font-weight:700>sticky</span>;
+</span><span style=display:block;width:100%;background-color:#d8d8d8>    <span style=color:#007020;font-weight:700>top</span>: <span style=color:#40a070>0</span>;
+</span>}
+.<span style=color:#0e84b5;font-weight:700>box</span> {
+    <span style=color:#007020;font-weight:700>height</span>: <span style=color:#40a070>200</span><span style=color:#902000>px</span>;
+    <span style=color:#007020;font-weight:700>background-color</span>: <span style=color:#40a070>#6a737d</span>;
+    <span style=color:#007020;font-weight:700>margin</span>: <span style=color:#40a070>20</span><span style=color:#902000>px</span> <span style=color:#40a070>0</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>正如高亮部分的代码那样，我设置了<code>.wrapper</code>元素的<code>sticky</code>相关属性后并没有什么效果。</p>
+<p><p class=md__image>
+<img src=images/not-working.gif alt="not working">
+</p>
+</p>
+<h2 id=求助-google->求助 Google 😊 <a href=#%e6%b1%82%e5%8a%a9-google- class=anchor>¶</a></h2>
+<p>搜了一圈，网上关于sticky无效的几个原因大概如下：</p>
+<ul>
+<li>必须指定<code>top/bottom/left/right</code>这几个属性之一</li>
+<li>父容器的高度要大于<code>sticky</code>元素的高度</li>
+<li>任意父节点的<code>overflow</code>属性必须都是<code>visible</code></li>
+</ul>
+<p>在我们这个例子里，要定位的元素是<code>.wrapper</code>，父容器是<code>.header</code>。我们没有给<code>.header</code>显式设置高度，因此它的高度是由内容撑开的，也就是说，父容器
+<code>.header</code>的高度等于子元素<code>.wrapper</code>的高度，不满足第2点，因此<code>sticky</code>定位无效。</p>
+<p>但是这里我们有不能通过设置<code>.header</code>的高度来实现，而是要基于<code>.container</code>作为容器来设置<code>sticky</code>，要不然就会出现下面这种奇怪的行为：</p>
+<p><p class=md__image>
+<img src=images/not-working-2.gif alt="not working">
+</p>
+</p>
+<p><code>.wrapper</code>元素虽然会吸顶，但是当滚动距离大于<code>.header</code>的高度后，会被后面的元素顶上去，也不是我们想要的。</p>
+<h2 id=变通办法>变通办法 <a href=#%e5%8f%98%e9%80%9a%e5%8a%9e%e6%b3%95 class=anchor>¶</a></h2>
+<p>暂时没有找到比较好的解决方法，我们只能把<code>.header</code>元素设置为<code>sticky</code>定位，然后调整<code>top</code>值来达到我们想要的效果。</p>
+<p>相关代码如下：</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style=display:block;width:100%;background-color:#d8d8d8><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span></span><span style=display:block;width:100%;background-color:#d8d8d8><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css>.<span style=color:#0e84b5;font-weight:700>header</span> {
+    <span style=color:#007020;font-weight:700>padding-top</span>: <span style=color:#40a070>200</span><span style=color:#902000>px</span>;
+<span style=display:block;width:100%;background-color:#d8d8d8>    <span style=color:#007020;font-weight:700>position</span>: <span style=color:#007020;font-weight:700>sticky</span>;
+</span><span style=display:block;width:100%;background-color:#d8d8d8>    <span style=color:#007020;font-weight:700>top</span>: <span style=color:#40a070>-200</span><span style=color:#902000>px</span>;
+</span>}
+.<span style=color:#0e84b5;font-weight:700>wrapper</span> {
+    <span style=color:#007020;font-weight:700>height</span>: <span style=color:#40a070>100</span><span style=color:#902000>px</span>;
+    <span style=color:#007020;font-weight:700>background-color</span>: <span style=color:#007020;font-weight:700>red</span>;
+}
+.<span style=color:#0e84b5;font-weight:700>box</span> {
+    <span style=color:#007020;font-weight:700>height</span>: <span style=color:#40a070>200</span><span style=color:#902000>px</span>;
+    <span style=color:#007020;font-weight:700>background-color</span>: <span style=color:#40a070>#6a737d</span>;
+    <span style=color:#007020;font-weight:700>margin</span>: <span style=color:#40a070>20</span><span style=color:#902000>px</span> <span style=color:#40a070>0</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=总结>总结 <a href=#%e6%80%bb%e7%bb%93 class=anchor>¶</a></h2>
+<p>要想实现元素吸顶效果，必须设置滚动容器内的直接子元素为<code>sticky</code>定位，不能是<strong>后代</strong>子元素。</p>
+</section>
+<section class=related>
+</section>
+<div class=bottom-nav>
+<a href=/posts/2021/goal/>&lt; 2021年目标</a>
+</div>
+<section class=comments>
+<h3>Comments</h3>
+</section>
+</article>
+</main>
+</div>
+</body>
+</html>
