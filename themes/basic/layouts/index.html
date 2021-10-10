@@ -1,41 +1,21 @@
 {{ define "main" }}
 
-{{ .Content }}
+{{ range (where .Site.RegularPages "Type" "in" "posts").ByDate.Reverse }}
 
-<section>
-    <h3>Most recent project:</h3>
-
-    <ul>
-        {{ range first 1 (where .Site.RegularPages "Type" "in" "projects").ByDate.Reverse }}
-        <li>
-            <a href="{{.RelPermalink}}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-    </ul>
+<section class="post">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <span class="summary">{{.Summary}}</span>
+    <div class="footer">
+        <a href="{{ .RelPermalink }}">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" aria-label="查看图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M13 21v2h-2v-2H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6a3.99 3.99 0 0 1 3 1.354A3.99 3.99 0 0 1 15 3h6a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-8zm7-2V5h-5a2 2 0 0 0-2 2v12h7zm-9 0V7a2 2 0 0 0-2-2H4v14h7z"></path></g></svg>查看全文</a>
+        <time>
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" aria-label="日期图标" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4V1h2v2h6V1h2v2zm-2 2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5 6H4v8h16v-8z"></path></g></svg>
+            创建于 {{ .Date.Format "2006 年 01 月 15 日" }}
+        </time>
+    </div>
 </section>
 
-<section>
-    <h3>Most recent presentation:</h3>
+{{ end }}
 
-    <ul>
-        {{ range first 1 (where .Site.RegularPages "Type" "in" "presentations").ByDate.Reverse }}
-        <li>
-            <a href="{{.RelPermalink}}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-    </ul>
-</section>
-
-<section>
-    <h3>Most recent post:</h3>
-
-    <ul>
-        {{ range first 1 (where .Site.RegularPages "Type" "in" "posts").ByDate.Reverse }}
-        <li>
-            <a href="{{.RelPermalink}}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-    </ul>
-</section>
 
 {{ end }}

@@ -2,13 +2,14 @@
 <html>
     {{- partial "head.html" . -}}
     <body>
-        <div class="container">
+        <div id="container" class="container">
             {{- partial "header.html" . -}}
-            {{- partial "nav.html" . -}}
-            <main>
+            <main id="main">
                 {{- block "main" . }}{{- end }}
             </main>
-            {{- partial "footer.html" . -}}
+            {{ if .IsHome }}
+                {{- partial "footer.html" . -}}
+            {{ end }}
         </div>
     </body>
 </html>
