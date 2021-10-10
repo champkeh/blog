@@ -1,6 +1,7 @@
 {{ define "main" }}
 
 <article class="post-single">
+    <!--文章头部-->
     <header>
         <h1>{{ .Title }}</h1>
         <span class="summary">{{ .Summary }}</span>
@@ -16,15 +17,20 @@
         </div>
     </header>
 
-    <aside>
-        <h2>Table of Contents</h2>
-        {{ .TableOfContents }}
-    </aside>
+    <!--目录-->
+    {{ if gt (.TableOfContents | string | len) 32 }}
+        <aside>
+            <h2>Table of Contents</h2>
+            {{ .TableOfContents }}
+        </aside>
+    {{ end }}
 
+    <!--正文-->
     <section class="body">
         {{ .Content }}
     </section>
 
+    <!--相关内容-->
     <section class="related">
         {{ $related := .Site.RegularPages.Related . | first 5 }}
         {{ with $related }}
@@ -37,6 +43,7 @@
         {{ end }}
     </section>
 
+    <!--底部导航-->
     {{ with .Prev }}
     Prev: <a href="{{ .RelPermalink }}">{{.}}</a>
     {{ end }}
@@ -45,6 +52,7 @@
     Next: <a href="{{ .RelPermalink }}">{{.}}</a>
     {{ end }}
 
+    <!--评论-->
     <section class="comments">
         <h3>Comments</h3>
         {{ template "_internal/disqus.html" . }}

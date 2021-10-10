@@ -56,9 +56,10 @@ button, input {
   padding-top: 4.25rem;
 
   .wrapper {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
-    position: relative;
     color: var(--font-secondary);
     border-radius: var(--border-radius);
     background-color: var(--element-background);
@@ -233,7 +234,7 @@ button, input {
     }
 
     aside {
-      padding: 2.5rem 1rem;
+      padding: 1.5rem 1rem;
       border-bottom: var(--border);
 
       h2 {
@@ -242,6 +243,17 @@ button, input {
 
       ul {
         list-style-type: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--font-link);
+        line-height: 1;
+      }
+      a:hover {
+        color: var(--font-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
       }
     }
 
@@ -264,6 +276,12 @@ button, input {
 
       img {
         width: 100%;
+      }
+
+      .highlight {
+        margin: 1.5rem 0;
+        max-width: 150%;
+        width: fit-content;
       }
     }
   }

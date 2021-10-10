@@ -75,7 +75,7 @@ jobs:
       # Step 4 - Builds the site using the latest version of Hugo
       # Also specifies the theme we want to use
       - name: Build
-        run: hugo --theme=jane
+        run: hugo --theme=basic
 
       # Step 5 - Create name file
       - name: Create cname file
@@ -91,3 +91,9 @@ jobs:
           CLEAN: true
 ```
 
+## 后续对网站的完善
+
+- 优化页面样式及交互
+- 集成现代前端开发工具链
+- 集成 `tools` 项目，`tools`项目采用`sveltejs`开发
+- 开发实验室功能，功能待定
