@@ -279,6 +279,7 @@ button, input {
       img {
         width: 100%;
         border: var(--border);
+        border-radius: var(--border-radius);
       }
 
       .highlight {
@@ -328,6 +329,18 @@ button, input {
 
     section.comments {
       padding-top: 3rem;
+    }
+  }
+}
+
+h1,h2,h3,h4,h5,h6 {
+  .anchor {
+    color: var(--font-link);
+    visibility: hidden;
+  }
+  &:hover {
+    .anchor {
+      visibility: visible;
     }
   }
 }

@@ -19,7 +19,10 @@ hello world
 
 
 [跳转](http://www.gohugo.io "Title")
+[跳转2](www.gohugo.io)
 
+
+![](images/example.jpg "Title")
 
 :smile:
 :wink:
