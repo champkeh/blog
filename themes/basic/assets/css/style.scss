@@ -161,7 +161,6 @@ button, input {
   a {
     display: inline-flex;
     align-items: center;
-    margin-right: 1.375rem;
     text-decoration: none;
     color: var(--font-link);
     line-height: 2.25;
@@ -210,6 +209,9 @@ button, input {
       align-items: flex-end;
       flex-wrap: wrap;
 
+      a {
+        margin-right: 1.375rem;
+      }
       time {
         margin-right: 1.375rem;
         display: flex;
@@ -225,6 +227,7 @@ button, input {
       }
     }
   }
+
   section.post, section.about {
     padding: 2.5rem 1rem;
     border-bottom: var(--border);
