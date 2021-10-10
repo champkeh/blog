@@ -134,11 +134,6 @@ CC-BY-SA-4.0
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
 </span></code></pre></td>
 <td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#60a0b0;font-style:italic># Workflow to build and deploy site to Github Pages using Hugo</span><span style=color:#bbb>
@@ -151,38 +146,33 @@ CC-BY-SA-4.0
 </span><span style=color:#bbb>
 </span><span style=color:#bbb></span><span style=color:#062873;font-weight:700>jobs</span>:<span style=color:#bbb>
 </span><span style=color:#bbb>  </span><span style=color:#062873;font-weight:700>build-and-deploy</span>:<span style=color:#bbb>
-</span><span style=color:#bbb>    
+</span><span style=color:#bbb>
 </span><span style=color:#bbb>    </span><span style=color:#062873;font-weight:700>runs-on</span>:<span style=color:#bbb> </span>ubuntu-latest<span style=color:#bbb>
 </span><span style=color:#bbb>
 </span><span style=color:#bbb>    </span><span style=color:#062873;font-weight:700>steps</span>:<span style=color:#bbb>
 </span><span style=color:#bbb>
 </span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 1 - Checks-out your repository under $GITHUB_WORKSPACE</span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Checkout<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Checkout 🛎️<span style=color:#bbb>
 </span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>uses</span>:<span style=color:#bbb> </span>actions/checkout@v2<span style=color:#bbb>
-</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>with</span>:<span style=color:#bbb>
-</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>submodules</span>:<span style=color:#bbb> </span><span style=color:#007020;font-weight:700>true</span><span style=color:#bbb>  </span><span style=color:#60a0b0;font-style:italic># Fetch Hugo themes</span><span style=color:#bbb>
-</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>fetch-depth</span>:<span style=color:#bbb> </span><span style=color:#40a070>0</span><span style=color:#bbb>    </span><span style=color:#60a0b0;font-style:italic># Fetch all history for .GitInfo and .Lastmod</span><span style=color:#bbb>
 </span><span style=color:#bbb>
 </span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 2 - Sets up the latest version of Hugo</span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Setup Hugo<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Setup Hugo 🔧<span style=color:#bbb>
 </span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>uses</span>:<span style=color:#bbb> </span>peaceiris/actions-hugo@v2<span style=color:#bbb>
 </span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>with</span>:<span style=color:#bbb>
 </span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>hugo-version</span>:<span style=color:#bbb> </span><span style=color:#4070a0>&#39;latest&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#062873;font-weight:700>extended</span>:<span style=color:#bbb> </span><span style=color:#007020;font-weight:700>true</span><span style=color:#bbb>
 </span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 3 - Clean and don&#39;t fail</span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Clean public directory<span style=color:#bbb>
-</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>run</span>:<span style=color:#bbb> </span>rm -rf public<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 3 - Install Dependencies and Build site</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Install and Build 🔧<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>run</span>:<span style=color:#bbb> </span>|<span style=color:#4070a0;font-style:italic>
+</span><span style=color:#4070a0;font-style:italic>          yarn
+</span><span style=color:#4070a0;font-style:italic>          yarn build</span><span style=color:#bbb>          
 </span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 4 - Builds the site using the latest version of Hugo</span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Also specifies the theme we want to use</span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Build<span style=color:#bbb>
-</span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>run</span>:<span style=color:#bbb> </span>hugo --theme=basic<span style=color:#bbb>
-</span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 5 - Create name file</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 4 - Create name file</span><span style=color:#bbb>
 </span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Create cname file<span style=color:#bbb>
 </span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>run</span>:<span style=color:#bbb> </span>echo &#39;blog.champ.design&#39; &gt; public/CNAME<span style=color:#bbb>
 </span><span style=color:#bbb>
-</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 6 - Push our generated site to our gh-pages branch</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:#60a0b0;font-style:italic># Step 5 - Push our generated site to our gh-pages branch</span><span style=color:#bbb>
 </span><span style=color:#bbb>      </span>- <span style=color:#062873;font-weight:700>name</span>:<span style=color:#bbb> </span>Deploy<span style=color:#bbb>
 </span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>uses</span>:<span style=color:#bbb> </span>JamesIves/github-pages-deploy-action@3.7.1<span style=color:#bbb>
 </span><span style=color:#bbb>        </span><span style=color:#062873;font-weight:700>with</span>:<span style=color:#bbb>
