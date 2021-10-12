@@ -148,8 +148,8 @@ CC-BY-SA-4.0
 <li>任意父节点的<code>overflow</code>属性必须都是<code>visible</code></li>
 </ul>
 <p>在我们这个例子里，要定位的元素是<code>.wrapper</code>，父容器是<code>.header</code>。我们没有给<code>.header</code>显式设置高度，因此它的高度是由内容撑开的，也就是说，父容器
-<code>.header</code>的高度等于子元素<code>.wrapper</code>的高度，不满足第2点，因此<code>sticky</code>定位无效。</p>
-<p>但是这里我们有不能通过设置<code>.header</code>的高度来实现，而是要基于<code>.container</code>作为容器来设置<code>sticky</code>，要不然就会出现下面这种奇怪的行为：</p>
+<code>.header</code>的高度<strong>等于</strong>子元素<code>.wrapper</code>的高度，不满足第2点，因此<code>sticky</code>定位无效。</p>
+<p>但是这里我们又不能通过设置<code>.header</code>的高度来实现，而是要基于<code>.container</code>作为容器来设置<code>sticky</code>，要不然就会出现下面这种奇怪的行为：</p>
 <p><p class=md__image>
 <img src=images/not-working-2.gif alt="not working">
 </p>
