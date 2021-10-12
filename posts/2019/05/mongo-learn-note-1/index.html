@@ -1,13 +1,12 @@
 <!doctype html><html><head>
 <meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=0">
 <title>MongoDB 学习笔记之CRUD - champ的个人博客</title>
 <meta name=author content="champ">
 <meta name=description content="champ的个人网站，分享一些自己在开发过程中的小知识已经一些小工具">
 <meta name=keywords content="开发笔记，小工具">
-<link rel=stylesheet href=/css/style.min.fa0868f50acb850007eddf2a140a2d223abd2a791a6e71094462ed65b2f033d8.css>
+<link rel=stylesheet href=/css/style.min.3d440fc01f949ea9ca45469410c5abc44efa1e0deec8690d0f923dd4d649e3fc.css>
 <link rel=stylesheet href=/js/app.min.32095c9383089bb169dd0ad8552d0d7044206daf16c5f53c90395500fe9cbc1f.css>
-<script src=/js/app.min.1efa461e923265a55116bf3d81e23f569c18279542d6261f87075f4e8c0eddb6.js></script>
 </head>
 <body>
 <div id=container class=container>
@@ -18,6 +17,9 @@
 <button class=round-right><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="文章目录" class="css-ggaxow ellz05y0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M20 22H4a1 1 0 01-1-1V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></g></svg>
 目录</button>
 </div>
+<div class="output-wrapper hide">
+<div id=output class=output></div>
+</div>
 </header>
 <main id=main>
 <article class=post-single>
@@ -26,11 +28,11 @@
 <span class=summary>启动一个 MongoDB 服务器容器 ¶ 1 2 $ docker pull mongo:4 $ docker run --name mymongo -v /data/docker-db:/data/db -d mongo:4 启动 Mongo Express 容器 ¶ 1 2 $ docker pull mongo-express $ docker run --link mymongo:mongo -p 8081:8081 -d mongo-express 在浏览器打开 http://localhost</span>
 <div class=meta>
 <time>
-<i class="far fa-calendar"></i>
+<i class="icon far fa-calendar"></i>
 编辑于 2021 年 10 月 12 日
 </time>
 <a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh target=_blank rel="noopener noreferrer">
-<i class="far fa-copyright"></i>
+<i class="icon far fa-copyright"></i>
 CC-BY-SA-4.0
 </a>
 </div>
@@ -134,7 +136,7 @@ switched to db <span style=color:#007020>test</span>
 &gt; show collections
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=创建文档>创建文档 <a href=#%e5%88%9b%e5%bb%ba%e6%96%87%e6%a1%a3 class=anchor>¶</a></h3>
+</div><h3 id=创建文档>创建文档</h3>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  1
@@ -587,7 +589,7 @@ BulkWriteResult<span style=color:#666>({</span>
 <span style=color:#60a0b0;font-style:italic># save 会调用 insert 创建文档，所以 save 的返回类型和 insert 相同</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=对象主键>对象主键 <a href=#%e5%af%b9%e8%b1%a1%e4%b8%bb%e9%94%ae class=anchor>¶</a></h3>
+</div><h3 id=对象主键>对象主键</h3>
 <p>默认的对象主键 objectId</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -609,7 +611,7 @@ ObjectId<span style=color:#666>(</span><span style=color:#4070a0>&#34;5ce0ec0672
 ISODate<span style=color:#666>(</span><span style=color:#4070a0>&#34;2019-05-19T05:39:18Z&#34;</span><span style=color:#666>)</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=复合主键>复合主键 <a href=#%e5%a4%8d%e5%90%88%e4%b8%bb%e9%94%ae class=anchor>¶</a></h3>
+</div><h3 id=复合主键>复合主键</h3>
 <p>可以使用文档作为文档的主键</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -631,7 +633,7 @@ ISODate<span style=color:#666>(</span><span style=color:#4070a0>&#34;2019-05-19T
 <span style=color:#666>)</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=读取文档>读取文档 <a href=#%e8%af%bb%e5%8f%96%e6%96%87%e6%a1%a3 class=anchor>¶</a></h3>
+</div><h3 id=读取文档>读取文档</h3>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -790,7 +792,7 @@ db.&lt;collection&gt;.find<span style=color:#666>(</span>&lt;query&gt;, &lt;proj
 <span style=color:#666>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=匹配查询>匹配查询 <a href=#%e5%8c%b9%e9%85%8d%e6%9f%a5%e8%af%a2 class=anchor>¶</a></h4>
+</div><h4 id=匹配查询>匹配查询</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -837,7 +839,7 @@ db.&lt;collection&gt;.find<span style=color:#666>(</span>&lt;query&gt;, &lt;proj
 <span style=color:#666>{</span> <span style=color:#4070a0>&#34;_id&#34;</span> : <span style=color:#666>{</span> <span style=color:#4070a0>&#34;type&#34;</span> : <span style=color:#4070a0>&#34;savings&#34;</span>, <span style=color:#4070a0>&#34;accountId&#34;</span> : <span style=color:#4070a0>&#34;002&#34;</span> <span style=color:#666>}</span>, <span style=color:#4070a0>&#34;name&#34;</span> : <span style=color:#4070a0>&#34;tom&#34;</span>, <span style=color:#4070a0>&#34;balance&#34;</span> : <span style=color:#40a070>100</span> <span style=color:#666>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=比较操作符>比较操作符 <a href=#%e6%af%94%e8%be%83%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=比较操作符>比较操作符</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -1037,7 +1039,7 @@ db.&lt;collection&gt;.find<span style=color:#666>(</span>&lt;query&gt;, &lt;proj
 <p>可以看到，结果中有很多文档并没有包含 <code>_id.type</code> 这个字段
 可以配合下面的 <code>$exists</code> 操作符一块使用</p>
 </blockquote>
-<h4 id=逻辑操作符>逻辑操作符 <a href=#%e9%80%bb%e8%be%91%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+<h4 id=逻辑操作符>逻辑操作符</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -1233,7 +1235,7 @@ db.&lt;collection&gt;.find<span style=color:#666>(</span>&lt;query&gt;, &lt;proj
 <code>$not</code> 和 <code>$nor</code> 也会筛选出并不包含查询字段的文档
 可以配合下面的 <code>$exists</code> 操作符一块使用</p>
 </blockquote>
-<h4 id=字段操作符>字段操作符 <a href=#%e5%ad%97%e6%ae%b5%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+<h4 id=字段操作符>字段操作符</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -1336,7 +1338,7 @@ db.&lt;collection&gt;.find<span style=color:#666>(</span>&lt;query&gt;, &lt;proj
 
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=数组操作符>数组操作符 <a href=#%e6%95%b0%e7%bb%84%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=数组操作符>数组操作符</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -1463,7 +1465,7 @@ BulkWriteResult<span style=color:#666>({</span>
 <span style=color:#666>}</span> <span style=color:#666>)</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=运算操作符>运算操作符 <a href=#%e8%bf%90%e7%ae%97%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=运算操作符>运算操作符</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -1520,7 +1522,7 @@ BulkWriteResult<span style=color:#666>({</span>
 <span style=color:#666>{</span> <span style=color:#4070a0>&#34;_id&#34;</span> : ObjectId<span style=color:#666>(</span><span style=color:#4070a0>&#34;5ce00d5972e77e7cb392a8fe&#34;</span><span style=color:#666>)</span>, <span style=color:#4070a0>&#34;name&#34;</span> : <span style=color:#4070a0>&#34;charlie&#34;</span>, <span style=color:#4070a0>&#34;balance&#34;</span> : <span style=color:#40a070>500</span> <span style=color:#666>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=文档游标>文档游标 <a href=#%e6%96%87%e6%a1%a3%e6%b8%b8%e6%a0%87 class=anchor>¶</a></h3>
+</div><h3 id=文档游标>文档游标</h3>
 <p><code>db.collection.find()</code> 返回的是一个文档集合游标</p>
 <p>在<strong>不迭代</strong>游标的情况下，只列出前20个文档:</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
@@ -1599,7 +1601,7 @@ BulkWriteResult<span style=color:#666>({</span>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#666>&gt;</span> myCursor.close();
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=游标函数>游标函数 <a href=#%e6%b8%b8%e6%a0%87%e5%87%bd%e6%95%b0 class=anchor>¶</a></h3>
+</div><h3 id=游标函数>游标函数</h3>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
@@ -1620,7 +1622,7 @@ cursor.count()
 cursor.sort()
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=hasnext-和-next-函数>hasNext 和 next 函数 <a href=#hasnext-%e5%92%8c-next-%e5%87%bd%e6%95%b0 class=anchor>¶</a></h4>
+</div><h4 id=hasnext-和-next-函数>hasNext 和 next 函数</h4>
 <blockquote>
 <p>hasNext 和 next 用于遍历游标</p>
 </blockquote>
@@ -1666,7 +1668,7 @@ cursor.sort()
 }
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=foreach-函数>forEach 函数 <a href=#foreach-%e5%87%bd%e6%95%b0 class=anchor>¶</a></h4>
+</div><h4 id=foreach-函数>forEach 函数</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -1705,7 +1707,7 @@ cursor.sort()
 }
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=limit-和-skip-函数>limit 和 skip 函数 <a href=#limit-%e5%92%8c-skip-%e5%87%bd%e6%95%b0 class=anchor>¶</a></h4>
+</div><h4 id=limit-和-skip-函数>limit 和 skip 函数</h4>
 <blockquote>
 <p>这两个函数通常用于分页</p>
 </blockquote>
@@ -1752,7 +1754,7 @@ cursor.skip(<span style=color:#666>&lt;</span>offset<span style=color:#666>&gt;<
 <p>不对游标进行任何限制，与 <code>limit()</code> 以及不进行调用效果相同。
 也就是说，默认返回前20个文档？</p>
 </blockquote>
-<h4 id=count-函数>count 函数 <a href=#count-%e5%87%bd%e6%95%b0 class=anchor>¶</a></h4>
+<h4 id=count-函数>count 函数</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
@@ -1810,7 +1812,7 @@ cursor.skip(<span style=color:#666>&lt;</span>offset<span style=color:#666>&gt;<
 <span style=color:#60a0b0;font-style:italic># 在这种情况下，应该避免使用不提供筛选条件的 cursor.count() 函数，而使用聚合管道来计算文档数量</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=sort-函数>sort 函数 <a href=#sort-%e5%87%bd%e6%95%b0 class=anchor>¶</a></h4>
+</div><h4 id=sort-函数>sort 函数</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
@@ -1944,7 +1946,7 @@ Type <span style=color:#4070a0>&#34;it&#34;</span> <span style=color:#007020;fon
 与 <code>db.accounts.find().limit(5).skip(3).sort({ balance: -1 })</code>的结果相同，不管书写顺序如何，执行顺序永远是:
 <code>sort()</code> > <code>skip()</code> > <code>limit()</code></p>
 </blockquote>
-<h3 id=文档投射>文档投射 <a href=#%e6%96%87%e6%a1%a3%e6%8a%95%e5%b0%84 class=anchor>¶</a></h3>
+<h3 id=文档投射>文档投射</h3>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
@@ -2044,7 +2046,7 @@ Type <span style=color:#4070a0>&#34;it&#34;</span> <span style=color:#007020;fon
 }
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=在数组字段上使用投射>在数组字段上使用投射 <a href=#%e5%9c%a8%e6%95%b0%e7%bb%84%e5%ad%97%e6%ae%b5%e4%b8%8a%e4%bd%bf%e7%94%a8%e6%8a%95%e5%b0%84 class=anchor>¶</a></h4>
+</div><h4 id=在数组字段上使用投射>在数组字段上使用投射</h4>
 <p><code>$slice</code>操作符可以返回数组字段中的部分元素</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -2228,7 +2230,7 @@ Type <span style=color:#4070a0>&#34;it&#34;</span> <span style=color:#007020;fon
 <span style=color:#60a0b0;font-style:italic># &lt;options&gt; 文档声明了一些应用于更新操作的选项和参数</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=更新整篇文档>更新整篇文档 <a href=#%e6%9b%b4%e6%96%b0%e6%95%b4%e7%af%87%e6%96%87%e6%a1%a3 class=anchor>¶</a></h3>
+</div><h3 id=更新整篇文档>更新整篇文档</h3>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -2345,7 +2347,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 </div><blockquote>
 <p>也就是说，更新整篇文档的操作，只能应用在单一文档上</p>
 </blockquote>
-<h3 id=更新特定字段>更新特定字段 <a href=#%e6%9b%b4%e6%96%b0%e7%89%b9%e5%ae%9a%e5%ad%97%e6%ae%b5 class=anchor>¶</a></h3>
+<h3 id=更新特定字段>更新特定字段</h3>
 <p>如果<code>&lt;update></code>文档只包含更新操作符，<code>db.collection.update()</code>将会使用<code>&lt;update></code>文档更新集合中符合<code>&lt;query></code>筛选条件的所有文档中的特定字段</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -2371,7 +2373,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <span style=color:#bb60d5>$max</span>        比较增大字段值
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=set操作符>$set操作符 <a href=#set%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=set操作符>$set操作符</h4>
 <p>更新或新增字段</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -2729,7 +2731,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <p>注意:
 如果向现有数组字段范围以外的位置添加新值，数组字段的长度会扩大，未被赋值的数组成员将被设置为<code>null</code></p>
 </blockquote>
-<h4 id=unset-操作符>$unset 操作符 <a href=#unset-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+<h4 id=unset-操作符>$unset 操作符</h4>
 <p>删除字段</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -2991,7 +2993,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 </div><blockquote>
 <p>当使用<code>$unset</code>命令删除数组字段中的某一个元素时，这个元素不会被删除，只会被赋以<code>null</code>值，而数组的长度不会改变</p>
 </blockquote>
-<h4 id=rename-操作符>$rename 操作符 <a href=#rename-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+<h4 id=rename-操作符>$rename 操作符</h4>
 <p>重命名字段</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -3322,7 +3324,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <p>当<code>$rename</code>命令中的新字段存在的时候，<code>$rename</code>命令会先<code>$unset</code>新旧字段，然后再<code>$set</code>新字段
 <code>$rename</code>命令中的旧字段和新字段都不可以指向数组元素</p>
 </blockquote>
-<h4 id=inc-和-mul-操作符>$inc 和 $mul 操作符 <a href=#inc-%e5%92%8c-mul-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+<h4 id=inc-和-mul-操作符>$inc 和 $mul 操作符</h4>
 <p>更新字段值</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -3507,7 +3509,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <span style=color:#666>{</span> <span style=color:#4070a0>&#34;_id&#34;</span> : ObjectId<span style=color:#666>(</span><span style=color:#4070a0>&#34;5ce00d5972e77e7cb392a8ff&#34;</span><span style=color:#666>)</span>, <span style=color:#4070a0>&#34;name&#34;</span> : <span style=color:#4070a0>&#34;david&#34;</span>, <span style=color:#4070a0>&#34;balance&#34;</span> : 99.75, <span style=color:#4070a0>&#34;notYetExist&#34;</span> : 10, <span style=color:#4070a0>&#34;notYetExistEither&#34;</span> : <span style=color:#40a070>0</span> <span style=color:#666>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=min-和-max-操作符>$min 和 $max 操作符 <a href=#min-%e5%92%8c-max-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=min-和-max-操作符>$min 和 $max 操作符</h4>
 <p>比较之后更新字段值</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -3816,7 +3818,7 @@ Regular Expression
 (最大)
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=数组更新操作符>数组更新操作符 <a href=#%e6%95%b0%e7%bb%84%e6%9b%b4%e6%96%b0%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h3>
+</div><h3 id=数组更新操作符>数组更新操作符</h3>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
@@ -3833,7 +3835,7 @@ Regular Expression
 <span style=color:#bb60d5>$push</span>       向数组中增添元素
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=addtoset-操作符>$addToSet 操作符 <a href=#addtoset-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=addtoset-操作符>$addToSet 操作符</h4>
 <p>向数组字段中添加元素</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -4174,7 +4176,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <span style=color:#666>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=pop-操作符>$pop 操作符 <a href=#pop-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=pop-操作符>$pop 操作符</h4>
 <p>从数组字段中删除元素(只能删除数组中第一个或者最后一个元素)</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -4469,7 +4471,7 @@ WriteResult<span style=color:#666>({</span>
 <span style=color:#666>})</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=pull-操作符>$pull 操作符 <a href=#pull-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=pull-操作符>$pull 操作符</h4>
 <p>从数组字段中删除特定元素(灵活性比<code>$pop</code>强)</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -4737,7 +4739,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <span style=color:#60a0b0;font-style:italic># 因此，33333333没有出现在查询结果中</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=pullall-操作符>$pullAll 操作符 <a href=#pullall-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=pullall-操作符>$pullAll 操作符</h4>
 <p>从数组字段中删除特定元素</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -5117,7 +5119,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <span style=color:#60a0b0;font-style:italic># 可以看到，$pull 在删除内嵌文档时，对字段的排列顺序没有要求</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=push-操作符>$push 操作符 <a href=#push-%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=push-操作符>$push 操作符</h4>
 <p>向数组字段中添加元素</p>
 <p><code>$push</code>和<code>$addToSet</code>命令相似，但是<code>$push</code>命令的功能更强大</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
@@ -5778,7 +5780,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <span style=color:#666>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=占位操作符>$占位操作符 <a href=#%e5%8d%a0%e4%bd%8d%e6%93%8d%e4%bd%9c%e7%ac%a6 class=anchor>¶</a></h4>
+</div><h4 id=占位操作符>$占位操作符</h4>
 <p>更新数组中的特定元素</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -6003,10 +6005,10 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 <span style=color:#666>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=update-options>update options <a href=#update-options class=anchor>¶</a></h3>
+</div><h3 id=update-options>update options</h3>
 <p><code>db.&lt;collection>.update(&lt;query>, &lt;update>, &lt;options>)</code></p>
 <p><code>&lt;options></code>参数提供了<code>update</code>命令的更多选项</p>
-<h4 id=multi-更新多个文档>multi 更新多个文档 <a href=#multi-%e6%9b%b4%e6%96%b0%e5%a4%9a%e4%b8%aa%e6%96%87%e6%a1%a3 class=anchor>¶</a></h4>
+<h4 id=multi-更新多个文档>multi 更新多个文档</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -6147,7 +6149,7 @@ WriteResult<span style=color:#666>({</span> <span style=color:#4070a0>&#34;nMatc
 更新多个文档的操作虽然在单一线程中执行，但是线程在执行过程中可能会被挂起，以便其他线程也有机会对数据进行操作
 如果需要保证多个文档操作时的原子性，就需要使用<code>MongoDB 4.0</code>版本中引入的事物功能进行操作</p>
 </blockquote>
-<h4 id=upsert-更新或创建文档>upsert 更新或创建文档 <a href=#upsert-%e6%9b%b4%e6%96%b0%e6%88%96%e5%88%9b%e5%bb%ba%e6%96%87%e6%a1%a3 class=anchor>¶</a></h4>
+<h4 id=upsert-更新或创建文档>upsert 更新或创建文档</h4>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -6276,7 +6278,7 @@ WriteResult<span style=color:#666>({</span>
 <span style=color:#60a0b0;font-style:italic># 👆这里没有包含 balance 字段</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=save>save <a href=#save class=anchor>¶</a></h4>
+</div><h4 id=save>save</h4>
 <p>这个命令也可以用来更新文档</p>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>

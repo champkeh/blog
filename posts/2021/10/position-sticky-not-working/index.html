@@ -1,13 +1,12 @@
 <!doctype html><html><head>
 <meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=0">
 <title>Sticky 定位无效的一些坑 - champ的个人博客</title>
 <meta name=author content="champ">
 <meta name=description content="记录sticky定位不生效的一些坑">
 <meta name=keywords content="开发笔记，小工具">
-<link rel=stylesheet href=/css/style.min.fa0868f50acb850007eddf2a140a2d223abd2a791a6e71094462ed65b2f033d8.css>
+<link rel=stylesheet href=/css/style.min.3d440fc01f949ea9ca45469410c5abc44efa1e0deec8690d0f923dd4d649e3fc.css>
 <link rel=stylesheet href=/js/app.min.32095c9383089bb169dd0ad8552d0d7044206daf16c5f53c90395500fe9cbc1f.css>
-<script src=/js/app.min.1efa461e923265a55116bf3d81e23f569c18279542d6261f87075f4e8c0eddb6.js></script>
 </head>
 <body>
 <div id=container class=container>
@@ -18,6 +17,9 @@
 <button class=round-right><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="文章目录" class="css-ggaxow ellz05y0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M20 22H4a1 1 0 01-1-1V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></g></svg>
 目录</button>
 </div>
+<div class="output-wrapper hide">
+<div id=output class=output></div>
+</div>
 </header>
 <main id=main>
 <article class=post-single>
@@ -26,11 +28,11 @@
 <span class=summary><code>position: sticky</code>是<code>css</code>中比较常见的吸顶定位方式，但使用不当很可能会导致该定位方式无效。本文记录自己在sticky定位中踩过的一些坑。</span>
 <div class=meta>
 <time>
-<i class="far fa-calendar"></i>
+<i class="icon far fa-calendar"></i>
 编辑于 2021 年 10 月 12 日
 </time>
 <a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh target=_blank rel="noopener noreferrer">
-<i class="far fa-copyright"></i>
+<i class="icon far fa-copyright"></i>
 CC-BY-SA-4.0
 </a>
 </div>
@@ -61,7 +63,7 @@ CC-BY-SA-4.0
 </p>
 </p>
 <h2 id=初步实现的代码-无效代码>初步实现的代码 (无效代码😟) <a href=#%e5%88%9d%e6%ad%a5%e5%ae%9e%e7%8e%b0%e7%9a%84%e4%bb%a3%e7%a0%81-%e6%97%a0%e6%95%88%e4%bb%a3%e7%a0%81 class=anchor>¶</a></h2>
-<h3 id=html>HTML <a href=#html class=anchor>¶</a></h3>
+<h3 id=html>HTML</h3>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -100,7 +102,7 @@ CC-BY-SA-4.0
 &lt;/<span style=color:#062873;font-weight:700>body</span>&gt;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=css>CSS <a href=#css class=anchor>¶</a></h3>
+</div><h3 id=css>CSS</h3>
 <div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -204,6 +206,7 @@ CC-BY-SA-4.0
 </section>
 <div class=bottom-nav>
 <a href=/posts/2021/goal/>&lt; 2021年目标</a>
+<a href=/posts/2021/10/adding-search-to-site/>给 hugo 站点添加搜索功能 ></a>
 </div>
 <section class=comments>
 <h3>Comments</h3>

@@ -1,0 +1,187 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=0">
+<title>给 hugo 站点添加搜索功能 - champ的个人博客</title>
+<meta name=author content="champ">
+<meta name=description content="给站点添加搜索功能有很多种方式，不管是哪种方式，原理都是先对内容建立索引，然后使用一个搜索引擎根据索引进行查询。本文我们就用纯前端的方式来给 hugo 静态站点添加搜索功能。">
+<meta name=keywords content="[search]">
+<link rel=stylesheet href=/css/style.min.3d440fc01f949ea9ca45469410c5abc44efa1e0deec8690d0f923dd4d649e3fc.css>
+<link rel=stylesheet href=/js/app.min.32095c9383089bb169dd0ad8552d0d7044206daf16c5f53c90395500fe9cbc1f.css>
+</head>
+<body>
+<div id=container class=container>
+<header id=header>
+<div class=wrapper>
+<button class=round-left onclick="location.href='/'"><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="主页图标" class="css-ggaxow ellz05y0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M19 21H5a1 1 0 01-1-1v-9H1l10.327-9.388a1 1 0 011.346.0L23 11h-3v9a1 1 0 01-1 1zM6 19h12V9.157l-6-5.454-6 5.454V19z"/></g></svg>
+回到主页</button>
+<button class=round-right><svg stroke="currentcolor" fill="currentcolor" stroke-width="0" viewBox="0 0 24 24" aria-label="文章目录" class="css-ggaxow ellz05y0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M20 22H4a1 1 0 01-1-1V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1zm-1-2V4H5v16h14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></g></svg>
+目录</button>
+</div>
+<div class="output-wrapper hide">
+<div id=output class=output></div>
+</div>
+</header>
+<main id=main>
+<article class=post-single>
+<header>
+<h1>给 hugo 站点添加搜索功能</h1>
+<span class=summary>给站点添加搜索功能有很多种方式，不管是哪种方式，原理都是先对内容建立索引，然后使用一个搜索引擎根据索引进行查询。本文我们就用纯前端的方式来给 hugo 静态站点添加搜索功能。</span>
+<div class=meta>
+<time>
+<i class="icon far fa-calendar"></i>
+编辑于 2021 年 10 月 12 日
+</time>
+<a href=https://creativecommons.org/licenses/by-sa/4.0/deed.zh target=_blank rel="noopener noreferrer">
+<i class="icon far fa-copyright"></i>
+CC-BY-SA-4.0
+</a>
+</div>
+</header>
+<aside>
+<h2>Table of Contents</h2>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#前言>前言</a></li>
+<li><a href=#生成文章列表数据>生成文章列表数据</a>
+<ul>
+<li><a href=#创建json模板>创建json模板</a></li>
+<li><a href=#应用数据模板生成文章列表数据>应用数据模板生成文章列表数据</a></li>
+</ul>
+</li>
+<li><a href=#构建索引文件>构建索引文件</a></li>
+<li><a href=#执行搜索>执行搜索</a></li>
+</ul>
+</nav>
+</aside>
+<section class=body>
+<h2 id=前言>前言 <a href=#%e5%89%8d%e8%a8%80 class=anchor>¶</a></h2>
+<p>对于数据库驱动的网站，我们可以执行SQL查询关键字进行搜索；而对于静态站点，我们需要首先生成索引文件，然后用一个搜索引擎进行查询。</p>
+<p>这里我们使用一个纯前端的搜索引擎 <a href=https://lunrjs.com/ target=_blank rel=noopener>Lunr</a>
+</p>
+<h2 id=生成文章列表数据>生成文章列表数据 <a href=#%e7%94%9f%e6%88%90%e6%96%87%e7%ab%a0%e5%88%97%e8%a1%a8%e6%95%b0%e6%8d%ae class=anchor>¶</a></h2>
+<p>因为我们的网站是用 hugo 搭建的静态网站，所以我们要在 hugo 构建时生成 json 格式的文章列表。</p>
+<h3 id=创建json模板>创建json模板</h3>
+<p>创建模板文件<code>layout/_default/search.json</code>，内容如下：</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>{<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:#062873;font-weight:700>&#34;results&#34;: </span>[<span style=color:#bbb>
+</span><span style=color:#bbb>        </span>{{- range $index, $page := .Site.RegularPages }}<span style=color:#bbb>
+</span><span style=color:#bbb>            </span>{{- if $index -}}, {{- end }}<span style=color:#bbb>
+</span><span style=color:#bbb>            </span>{<span style=color:#bbb>
+</span><span style=color:#bbb>                </span><span style=color:#062873;font-weight:700>&#34;href&#34;: </span>{{<span style=color:#bbb> </span>$page.Permalink | jsonify }},<span style=color:#bbb>
+</span><span style=color:#bbb>                </span><span style=color:#062873;font-weight:700>&#34;title&#34;: </span>{{<span style=color:#bbb> </span>$page.Title | jsonify }},<span style=color:#bbb>
+</span><span style=color:#bbb>                </span><span style=color:#062873;font-weight:700>&#34;body&#34;: </span>{{<span style=color:#bbb> </span>$page.Content | plainify | jsonify }}<span style=color:#bbb>
+</span><span style=color:#bbb>            </span>}<span style=color:#bbb>
+</span><span style=color:#bbb>        </span>{{- end }}<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>]<span style=color:#bbb>
+</span><span style=color:#bbb></span>}<span style=color:#bbb>
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id=应用数据模板生成文章列表数据>应用数据模板生成文章列表数据</h3>
+<p>默认情况下，我们只有数据模板是不会自动生成数据的，我们需要显式使用这个模板。</p>
+<p>首先，创建一个 search.md 文档：</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>hugo new search.md
+</code></pre></td></tr></table>
+</div>
+</div><p>我们不需要这个文档的内容，我们只是使用它的<code>front matter</code>来指定输出格式，如下所示：</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#0e84b5;font-weight:700>---</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#062873;font-weight:700>layout</span>:<span style=color:#bbb> </span>search<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#062873;font-weight:700>outputs</span>:<span style=color:#bbb> </span>[<span style=color:#4070a0>&#34;JSON&#34;</span>]<span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#0e84b5;font-weight:700>---</span><span style=color:#bbb>
+</span></code></pre></td></tr></table>
+</div>
+</div><p>我们指定了这个文档的模板采用我们之前创建的数据模板文件<code>search</code>，输出格式指定为<code>JSON</code>。
+这样在 hugo 构建时就会输出一个<code>search/index.json</code>文件，内容就是我们网站的所有文章生成的一个 json 文件。</p>
+<h2 id=构建索引文件>构建索引文件 <a href=#%e6%9e%84%e5%bb%ba%e7%b4%a2%e5%bc%95%e6%96%87%e4%bb%b6 class=anchor>¶</a></h2>
+<p>在主页使用<code>axios</code>获取文章列表：</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>axios.get(<span style=color:#4070a0>&#34;/search/index.json&#34;</span>).then(response =&gt; {
+    <span style=color:#007020>window</span>.ArticleList <span style=color:#666>=</span> response.data.result
+})
+</code></pre></td></tr></table>
+</div>
+</div><p>构建<code>lunr</code>的索引文件：</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#007020;font-weight:700>const</span> LunrSearchIndex <span style=color:#666>=</span> lunr(<span style=color:#007020;font-weight:700>function</span> () {
+    <span style=color:#007020;font-weight:700>this</span>.ref(<span style=color:#4070a0>&#39;href&#39;</span>)
+    <span style=color:#007020;font-weight:700>this</span>.field(<span style=color:#4070a0>&#39;title&#39;</span>)
+    <span style=color:#007020;font-weight:700>this</span>.field(<span style=color:#4070a0>&#39;body&#39;</span>)
+    <span style=color:#007020>window</span>.ArticleList.forEach(article =&gt; {
+        <span style=color:#007020;font-weight:700>this</span>.add(article)
+    })
+})
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=执行搜索>执行搜索 <a href=#%e6%89%a7%e8%a1%8c%e6%90%9c%e7%b4%a2 class=anchor>¶</a></h2>
+<p>这一部分就比较简单了，我们有了文章的索引直接调用<code>search</code>就可以了：</p>
+<div class=highlight><div style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#007020;font-weight:700>let</span> searchText <span style=color:#666>=</span> <span style=color:#4070a0>&#39;search text from input&#39;</span>
+<span style=color:#007020;font-weight:700>let</span> resultList <span style=color:#666>=</span> LunrSearchIndex.search(searchText)
+</code></pre></td></tr></table>
+</div>
+</div><p>关于<code>lunr</code>支持的搜索语法，可以查看<a href=https://lunrjs.com/guides/searching.html target=_blank rel=noopener>Lurn#Search</a>
+</p>
+</section>
+<section class=related>
+</section>
+<div class=bottom-nav>
+<a href=/posts/2021/10/position-sticky-not-working/>&lt; Sticky 定位无效的一些坑</a>
+</div>
+<section class=comments>
+<h3>Comments</h3>
+</section>
+</article>
+</main>
+</div>
+</body>
+</html>
