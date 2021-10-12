@@ -11,5 +11,8 @@
                 {{- partial "footer.html" . -}}
             {{ end }}
         </div>
+
+        <!--加载js文件-->
+        {{- block "script" . }}{{- end }}
     </body>
 </html>

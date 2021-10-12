@@ -6,12 +6,26 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import '@fortawesome/fontawesome-free/js/all.min'
 
 window.SearchApp = {
-    searchField: document.getElementById('searchField'),
-    allwords: document.getElementById('allwords'),
+    searchField: document.getElementById('search'),
     output: document.getElementById('output'),
     searchData: {},
     searchIndex: {}
 }
+
+document.addEventListener('keydown', evt => {
+    if (document.activeElement !== window.SearchApp.searchField) {
+        // 搜索框没有获取焦点
+        if (evt.key === '/') {
+            window.SearchApp.searchField.focus()
+            evt.preventDefault()
+        }
+    } else {
+        if (evt.key === 'Escape') {
+            window.SearchApp.searchField.blur()
+        }
+    }
+})
+
 
 axios.get("/search/index.json").then(response => {
     SearchApp.searchData = response.data
@@ -28,15 +42,16 @@ axios.get("/search/index.json").then(response => {
 })
 
 SearchApp.searchField.addEventListener('input', search)
-SearchApp.allwords.addEventListener('change', search)
 
 function search() {
     let searchText = SearchApp.searchField.value
-    searchText = searchText.split(' ').filter(word => word !== '')
 
-    if (SearchApp.allwords.checked) {
-        searchText = searchText.map(word => '+' + word)
+    if (!searchText) {
+        window.SearchApp.output.parentElement.classList.add('hide')
+        return
     }
+
+    searchText = searchText.split(' ').filter(word => word !== '')
     searchText = searchText.map(word => word + '*')
     searchText = searchText.join(' ')
 
@@ -57,6 +72,7 @@ function search() {
 }
 
 function display(list) {
+    window.SearchApp.output.parentElement.classList.remove('hide')
     SearchApp.output.innerText = ''
 
     if (list.length > 0) {

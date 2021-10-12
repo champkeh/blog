@@ -9,5 +9,11 @@
     {{ end }}
 
     {{ partial "posts/post_list_all.html" . }}
+{{ end }}
+
+{{ define "script" }}
+
+{{ $js := resources.Get "js/app.js" | minify | fingerprint }}
+<script src="{{$js.RelPermalink}}"></script>
 
 {{ end }}

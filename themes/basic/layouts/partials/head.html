@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1, minimum-scale=1,user-scalable=0">
     <title>
         {{- if .Page.IsHome -}}
             {{ .Site.Title }}
@@ -28,10 +28,6 @@
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
     {{ $css := resources.Get "js/app.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-
-    <!--加载js文件-->
-    {{ $js := resources.Get "js/app.js" | minify | fingerprint }}
-    <script src="{{$js.RelPermalink}}"></script>
 
     {{ template "_internal/google_analytics_async.html" . }}
 
