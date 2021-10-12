@@ -76,9 +76,9 @@ autoCollapseToc: false
 - 任意父节点的`overflow`属性必须都是`visible`
 
 在我们这个例子里，要定位的元素是`.wrapper`，父容器是`.header`。我们没有给`.header`显式设置高度，因此它的高度是由内容撑开的，也就是说，父容器
-`.header`的高度等于子元素`.wrapper`的高度，不满足第2点，因此`sticky`定位无效。
+`.header`的高度**等于**子元素`.wrapper`的高度，不满足第2点，因此`sticky`定位无效。
 
-但是这里我们有不能通过设置`.header`的高度来实现，而是要基于`.container`作为容器来设置`sticky`，要不然就会出现下面这种奇怪的行为：
+但是这里我们又不能通过设置`.header`的高度来实现，而是要基于`.container`作为容器来设置`sticky`，要不然就会出现下面这种奇怪的行为：
 
 ![not working](images/not-working-2.gif)
 
