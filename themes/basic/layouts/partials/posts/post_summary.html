@@ -1,0 +1,13 @@
+<section class="post">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <span class="summary">{{.Summary}}</span>
+    <div class="meta">
+        <a href="{{ .RelPermalink }}">
+            <i class="fas fa-book-open"></i>
+            查看全文</a>
+        <time>
+            <i class="far fa-calendar"></i>
+            创建于 {{ .Date.Format "2006 年 01 月 02 日" }}
+        </time>
+    </div>
+</section>

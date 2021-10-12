@@ -1,0 +1,5 @@
+{{ range (where .Site.RegularPages "Type" "in" "posts").ByDate.Reverse }}
+
+    {{ partial "posts/post_summary.html" . }}
+
+{{ end }}

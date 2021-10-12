@@ -1,0 +1,5 @@
+{{ range .Paginator.Pages }}
+    {{ partial "posts/post_summary.html" . }}
+{{ end }}
+
+{{ template "_internal/pagination.html" . }}

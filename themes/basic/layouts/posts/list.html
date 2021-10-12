@@ -1,13 +1,5 @@
 {{ define "main" }}
 
-    <h2>{{ .Title }}</h2>
-
-    {{ .Content }}
-
-    {{ range .Paginator.Pages }}
-        {{ partial "post_summary.html" .}}
-    {{ end }}
-
-    {{ template "_internal/pagination.html" . }}
+    {{ partial "posts/post_list_pagination.html" . }}
 
 {{ end }}

@@ -3,9 +3,9 @@ import commonjs from '@rollup/plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
 
 export default {
-    input: 'themes/basic/assets/js/index.js',
+    input: 'assets/js/index.js',
     output: {
-        file: 'themes/basic/assets/js/app.js',
+        file: 'assets/js/app.js',
         format: 'iife',
         name: 'myapp'
     },
